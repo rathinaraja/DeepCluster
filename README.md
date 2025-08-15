@@ -71,19 +71,19 @@ Step 3: Create a virtual environment and install the required packages.
 conda create -n DeepCluster++ python=3.12 (any version after 3.10)
 conda activate DeepCluster++ 
 
-# Core scientific libraries
+Core scientific libraries
 pip install numpy pandas scipy scikit-learn
 
-# Deep learning (PyTorch + torchvision)
+Deep learning (PyTorch + torchvision)
 pip install torch torchvision torchaudio
 
-# Image processing
+Image processing
 pip install pillow
 
-# Visualization
+Visualization
 pip install matplotlib seaborn
 
-# Progress bars
+Progress bars
 pip install tqdm
 ---------------------------------
 
