@@ -26,8 +26,8 @@ input_path/Test_samples
     └── ...
 
 
-**Step 2: Understand the output folder structure
--------**
+##Step 2: Understand the output folder structure
+##------- 
         Output
         ------
            |---clusters
