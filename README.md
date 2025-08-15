@@ -7,7 +7,25 @@ Select a representative set of WSIs to build the training dataset, extract 256×
 
 The input folder may either contain images directly (flat structure input_folder_2) or include subfolders (input_folder_1) with images inside as given below. Command-line arguments can be adjusted based on the folder structure.
 
-<pre> ``` input_path/Test_samples ├── input_folder_1 (WSI_1) │ ├── sub_folder_1 (Informative_Part1) │ │ ├── image1.png │ │ ├── image2.png │ │ └── ... │ ├── sub_folder_2 (Informative_Part2) │ │ └── ... │ └── sub_folder_m (Informative_Partm) ├── input_folder_2 (WSI_2) │ ├── image1.png │ ├── image2.png │ └── ... └── input_folder_n (WSI_n) ├── image1.png ├── image2.png └── ... ``` </pre>
+```plaintext
+input_path/Test_samples
+├── input_folder_1 (WSI_1)
+│   ├── sub_folder_1 (Informative_Part1)
+│   │   ├── image1.png
+│   │   ├── image2.png
+│   │   └── ...
+│   ├── sub_folder_2 (Informative_Part2)
+│   │   └── ...
+│   └── sub_folder_m (Informative_Partm)
+├── input_folder_2 (WSI_2)
+│   ├── image1.png
+│   ├── image2.png
+│   └── ...
+└── input_folder_n (WSI_n)
+    ├── image1.png
+    ├── image2.png
+    └── ...
+
 
 Step 2: Understand the output folder structure
 -------
