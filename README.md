@@ -73,7 +73,7 @@ plots (2 image files: t-SNE visualization with k-means clusters - with and witho
 └── ...
 </pre>
 
-Step 3: Create a virtual environment and install the required packages.
+Step 3: Create a virtual environment and install the required packages
 -------
 ```bash
 pip install -r requirements.txt
@@ -109,7 +109,7 @@ Step 4: Understand the command-line arguments
 | `--store_samples True`                | Stores the samples of clusters. Default: `False` (samples are not stored). |
 | `--store_samples_group_wise True`     | Stores the samples group-wise for each cluster. Default: `False` (samples are not stored). |
 
-Step 5: Command-line usage.
+Step 5: Command-line usage
 -------  
 ### Basic Usage
 
@@ -209,7 +209,7 @@ python Main.py --input_path /path/Test_samples/ --output_path /path/Output --sto
 - Minimum 256 images per input folder for effective clustering
 - Supported image formats: `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tiff`
 
-## Step 7: Explore Clusters and Collect Representative Tiles
+## Step 6: Explore Clusters and Collect Representative Tiles
 
 ### Overview
 Explore the different clusters of each WSI to collect representative tiles across the following tissue types:
@@ -262,7 +262,7 @@ Explore the different clusters of each WSI to collect representative tiles acros
 - Verify cluster purity for each tissue type
 - Document cluster-to-tissue-type mapping for reproducibility
 
-## Step 8: Pathologist Verification
+## Step 7: Pathologist Verification
 
 ### Training Set Validation
 
