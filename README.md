@@ -219,7 +219,7 @@ Explore the different clusters of each WSI to collect representative tiles acros
 | **ADI** | Adipose | Adipose tissue/Fat cells |
 | **LYM** | Lymphocyte | Lymphocytic infiltration |
 | **MUS** | Muscle | Muscle tissue |
-| **FCT** | Fibrous Connective Tissue | Loose connective tissue/Stroma |
+| **FCT** | Fibrous Connective Tissue | Loose connective tissue |
 | **MUC** | Mucin | Mucin-rich areas |
 | **NCS** | Necrotic Debris | Necrotic/Dead tissue |
 | **BLD** | Blood | Red blood cells/Vascular areas |
@@ -231,23 +231,76 @@ Explore the different clusters of each WSI to collect representative tiles acros
 1. **Review Generated Clusters**
    ```bash
    # Navigate to cluster output directory
-   cd /path/to/output/clusters/
+   cd /path/to/output/samples/
    
    # Review clusters for each WSI
    ls -la WSI_*/Cluster_*
    ```
 
-2. **Visual Inspection**
-   - Examine t-SNE plots in the `plots/` directory to understand cluster distribution
-   - Review sample images in each cluster folder
+2. **Visual Inspection** 
+   - Review sample images in each sample folder
    - Identify clusters that predominantly contain specific tissue types
+     
+3. **Manual Curation**
+   - Review sampled tiles from each cluster
+   - Create tissue-type specific folders:
+     ```
+     representative_tiles/
+     ├── ADI/
+     ├── LYM/
+     ├── MUS/
+     ├── FCT/
+     ├── MUC/
+     ├── NCS/
+     ├── BLD/
+     ├── TUM/
+     └── NOR/
+     ```
 
-3. **Representative Tile Selection**
-   ```bash
-   # Use the sampling functionality to extract representative tiles
-   python Main.py --input_path /path/WSI_data/ \
-                  --output_path /path/representative_tiles/ \
-                  --store_samples True \
-                  --store_samples_group_wise True \
-                  --sample_percentage 0.1
-   ```
+### Quality Assurance
+- Ensure balanced representation across all 9 tissue types
+- Verify cluster purity for each tissue type
+- Document cluster-to-tissue-type mapping for reproducibility
+
+## Step 8: Pathologist Verification
+
+### Training Set Validation
+
+The collected representative tiles undergo rigorous pathologist verification to ensure:
+
+#### Annotation Quality Control
+- **Expert Review**: Board-certified pathologists examine each representative tile
+- **Consensus Building**: Multiple pathologists review ambiguous cases
+- **Documentation**: All annotations are documented with reasoning
+
+#### Verification Process
+```bash
+# Organize tiles for pathologist review
+mkdir -p pathologist_review/{pending,verified,rejected}
+
+# Move tiles to pending review folder
+cp -r representative_tiles/* pathologist_review/pending/
+```
+
+#### Verification Criteria
+| Criteria | Description | Action |
+|----------|-------------|---------|
+| **Tissue Type Accuracy** | Correct classification of tissue type | Accept/Reject/Reclassify |
+| **Image Quality** | Clear, well-stained, artifact-free | Accept/Reject |
+| **Representative Nature** | Typical example of tissue type | Accept/Request alternatives |
+| **Diagnostic Relevance** | Clinically relevant features present | Accept/Enhance dataset |
+
+#### Verification Workflow
+1. **Initial Review**: Pathologist examines tiles by tissue type
+2. **Quality Assessment**: Rate each tile (1-5 scale)
+3. **Consensus Meeting**: Resolve disagreements
+4. **Final Dataset**: Create verified training set
+
+```bash
+# After verification, organize final training set
+mkdir -p verified_training_set/{ADI,LYM,MUS,FCT,MUC,NCS,BLD,TUM,NOR}
+
+# Move verified tiles to final training folders
+# (based on pathologist recommendations)
+```
+
