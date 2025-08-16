@@ -1,4 +1,4 @@
-DeepCluster++ Usage Guide
+# DeepCluster++ Usage Guide
 ---------------------------------
 Step 1: Understand the input folder structure
 -------
