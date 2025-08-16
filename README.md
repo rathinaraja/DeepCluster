@@ -1,6 +1,6 @@
 # DeepCluster++ Usage Guide
 ---------------------------------
-Step 1: Understand the input folder structure
+Step 1: Input folder structure
 -------
 Select a representative set of WSIs to build the training dataset, extract 256×256 tiles, preprocess them, and store them in the folder structure (like input_folder_1 or ) shown below. Refer to the Test_samples folder to visualize the outcomes of the following executions with various inputs. Ensure that all tiles are in RGB format.
 
@@ -24,7 +24,7 @@ The input folder may either contain images directly (flat structure input_folder
     └── ...
 </pre>
 
-Step 2: Understand the output folder structure
+Step 2: Output folder structure
 -------
 The following set of files are created in the output folder.
 <pre> 
@@ -78,16 +78,14 @@ Step 3: Create a virtual environment and install the required packages
 ```bash
 pip install -r requirements.txt
 ```
-Step 4: Understand the command-line arguments 
+Step 4: Command-line arguments 
 -------
 + Each input folder (WSI) should include a minimum of 256 images to match the 256 PCA components used. 
 + Consider the following key details about Test_samples to better understand the command-line arguments.
     - Input_path - /path/Test_samples
     - Input folders (WSIs) - WSI_1, WSI_2, WSI_3, WSI_4, and WSI_5
     - Sub folders (if available) - Informative_Part1, Informative_Part2, Informative_Part3, Less_Informative
-+ Number of cluster for each input folder is determined by taking square root of number of samples in each input folder.
-
-### Commandline arguments 
++ Number of cluster for each input folder is determined by taking square root of number of samples in each input folder. 
 
 | Argument                   | Description                                                                 |
 |-----------------------------|-----------------------------------------------------------------------------|
