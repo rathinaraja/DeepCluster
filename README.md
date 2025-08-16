@@ -209,17 +209,45 @@ python Main.py --input_path /path/Test_samples/ --output_path /path/Output --sto
 - Minimum 256 images per input folder for effective clustering
 - Supported image formats: `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tiff`
 
+## Step 7: Explore Clusters and Collect Representative Tiles
 
----------------------------------
+### Overview
+Explore the different clusters of each WSI to collect representative tiles across the following tissue types:
 
-Step 7: Explore the different clusters of each WSI to collect representative tiles across tissue types: ADI, LYM, MUS, FCT, MUC, NCS, BLD, TUM, and NOR.
+| Tissue Type | Abbreviation | Description |
+|-------------|--------------|-------------|
+| **ADI** | Adipose | Adipose tissue/Fat cells |
+| **LYM** | Lymphocyte | Lymphocytic infiltration |
+| **MUS** | Muscle | Muscle tissue |
+| **FCT** | Fibrous Connective Tissue | Loose connective tissue/Stroma |
+| **MUC** | Mucin | Mucin-rich areas |
+| **NCS** | Necrotic Debris | Necrotic/Dead tissue |
+| **BLD** | Blood | Red blood cells/Vascular areas |
+| **TUM** | Tumor | Tumor tissue |
+| **NOR** | Normal | Normal epithelial tissue |
 
----------------------------------
+### Cluster Exploration Process
 
-Step 8: The training set has been verified by pathologists.
+1. **Review Generated Clusters**
+   ```bash
+   # Navigate to cluster output directory
+   cd /path/to/output/clusters/
+   
+   # Review clusters for each WSI
+   ls -la WSI_*/Cluster_*
+   ```
 
----------------------------------
+2. **Visual Inspection**
+   - Examine t-SNE plots in the `plots/` directory to understand cluster distribution
+   - Review sample images in each cluster folder
+   - Identify clusters that predominantly contain specific tissue types
 
-Step 9: Perform tile normalization (Macenko) and validate with the models.
-
----------------------------------
+3. **Representative Tile Selection**
+   ```bash
+   # Use the sampling functionality to extract representative tiles
+   python Main.py --input_path /path/WSI_data/ \
+                  --output_path /path/representative_tiles/ \
+                  --store_samples True \
+                  --store_samples_group_wise True \
+                  --sample_percentage 0.1
+   ```
