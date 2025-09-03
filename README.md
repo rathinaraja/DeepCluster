@@ -19,6 +19,7 @@ Important to note:
 1. RGB required: Ensure that all the images (tiles) are in RGB format.
 2. Encoder input size: The pre-trained autoencoder used here was trained on images of size 256x256 pixels. If your tiles have a different size, either retrain an autoencoder at that size or use a compatible pre-trained encoder to extract features.
 3. If you have a single folder with images or multiple folders with images or folders with subfolders or etc. We have designed the program work with any folder structure.
+4. Explore the <a href="https://drive.google.com/drive/folders/193rN6BcE98ZMhPVWSHuKr1XEpZ1kJjbK?usp=drive_link" target="_blank" rel="noopener">input and output folder structure</a> to understand the following instructions.
 
 Input folder structure
 -------
