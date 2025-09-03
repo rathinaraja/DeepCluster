@@ -144,7 +144,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --
 To log all print statements into a text file, append `| tee output.txt` at the end of your command in the terminal:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --gpu_ids 1 | tee output.txt
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --gpu_ids 1 | tee Output.txt
 ``` 
 
 > **Note:** The above execution does not store any details by default.
