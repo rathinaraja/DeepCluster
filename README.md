@@ -247,8 +247,16 @@ python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --s
 |-----------|-------------|---------|----------------|
 | `--input_path` | Path to input directory containing WSIs | Required | `/path/Test_samples/` |
 | `--output_path` | Path to output directory | Required | `/path/Output/` |
-| `--input_folders` | Comma-separated list of specific folders to process | `None` (all folders) | `"WSI_1,WSI_4"` |
+| `--selected_input_folders` | Comma-separated list of specific folders to process | `None` (all folders) | `"WSI_1,WSI_4"` |
 | `--sub_folders` | Comma-separated list of specific subfolders to process | `None` (all subfolders) | `"Informative_Part1,Informative_Part3"` |
+| `--process_all` | Process all the images in the input path | `None` | `True` |
+| `--gpu-ids` | Specify the GPU ID or list of GPU IDs | `None` | `4,7` |
+| `--device` | Process with CPU or all GPUs in the system | `cpu` | `cpu/all_gpus` |
+| `--batch_size` | Batch size to work on GPU | `64` | `Recommended to set 256` |
+| `--dim_reduce` | Reducing feature size from encoder before clustering | `256` | `Recommended to set 256` |
+| `--distance_groups` | Ensuring the diversty of images within a cluster | `5` | `Increase/decrease based on the requirement` |
+| `--model` | Path to the encoder | `5` | `Increase/decrease based on the requirement` |
+| `--sample_percentage` | Sampling images from clusters  | `AE_CRC.pth` | `Current path` |
 | `--store_features` | Store extracted features | `False` | `True`/`False` |
 | `--store_clusters` | Store cluster results | `False` | `True`/`False` |
 | `--store_plots` | Store visualization plots | `False` | `True`/`False` |
