@@ -126,11 +126,17 @@ Hardware requirements
 
 Create a virtual environment and install the required packages
 -------
+Option1 - using requirements.txt 
 ```bash
-conda create -n DeepCluster python==3.9
-
-pip install -r Requirements.txt 
+conda create -n DeepCluster python=3.9 
+conda activate DeepCluster 
+pip install -r requirements.txt
 ```
+Option2 - using environment.yml 
+```bash
+conda env create -f environment.yml
+conda activate DeepCluster
+``` 
 Command-line arguments 
 -------
 + Each input folder (WSI) should include a minimum of 256 images to match the 256 PCA components used. Folder with less than 256 images is still valid but there is no DeepCluster++ applied.
@@ -143,15 +149,15 @@ Command-line arguments
 | Argument                   | Description                                                                 |
 |-----------------------------|-----------------------------------------------------------------------------|
 | `--input_path /path/Test_samples_1`      | The input path containing a set of input folders, each corresponding to a WSI. |
-| `--selected_input_folders "WSI_1,WSI_2"`       | The input folders in the path (e.g., WSI names). By default, if not passed, all folders in the path are considered. |
-| `--sub_folders "Informative_Part1,Informative_Part2"`         | If a WSI contains subfolders, specify which ones to process. By default, all subfolders in the input folder are considered. |
-| `--process_all True`                  | Process all the images in the given input path regardless of sub_folders. |
+| `--selected_input_folders "WSI_1,WSI_2"`       | Process specific input folders in the path (e.g., WSI names). By default, if not passed, all input folders in the path are considered. |
+| `--sub_folders "Informative_Part1,Informative_Part2"`  | If an input folder contains subfolders, specify which ones to process. By default, all subfolders in the input folder are considered. |
+| `--process_all True`                  | Process all the images in the given input path regardless of input folders and sub_folders. |
 | `--output_path /path/Output`          | Output path to store extracted features, clusters, plots, and samples. |
 | `--device cpu`                       | Optional. Default: None. Device type (CPU or all_gpus). |
 | `--gpu_ids 4,5`                          | Optional. Default: GPU `0` is assigned. |
 | `--batch_size 128`                     | Optional. Default: `128`. Recommended: `256`. |
-| `--distance_groups 5`                 | Default: `5`. |
-| `--sample_percentage 0.2`             | Default: `0.2` (20%). Increase this value to collect more samples. |
+| `--distance_groups 5`                 | Default: `5`. Dividing the cluster into 5 groups.|
+| `--sample_percentage 0.2`             | Default: `0.2` (sample 20% in a cluster). Increase this value to collect more samples. |
 | `--model AE_CRC.pth`                  | Model path. By default, `AE_CRC.pth` in the current path is used. |
 | `--seed 42`                           | Optional. Default: `42`. |
 | `--store_features True`               | Stores the features of input folders. Default: `False` (features are not stored). |
