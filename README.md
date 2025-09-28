@@ -1,6 +1,13 @@
 # What is DeepCluster++? 
-Modern computer vision projects, across research and industry, often rely on supervised learning, which in turn demands well-curated, diverse training data. To efficiently gather representative samples from large image collections, we introduce DeepCluster++, a semi-automated dataset curation framework with three stages: (1) extract feature embeddings for all images using a domain-appropriate encoder (e.g., an autoencoder or a pre-trained backbone) or suitable pretrained encoder; (2) cluster the embeddings (e.g., with k-means) to group visually similar items and then apply equal-frequency sampling within clusters to capture diverse patterns for each class; and (3) have subject-matter experts review the selected samples to confirm label quality. By tuning a small set of parameters, DeepCluster++ lets practitioners balance the number of samples and the level of diversity, substantially reducing manual effort while yielding high-quality training data for robust models.
-# Typical Workflow (at a glance)
+Modern computer vision projects, across research and industry, often rely on supervised learning, which in turn demands well-curated, diverse training data. To efficiently gather representative samples from large image collections, we introduce DeepCluster++, a semi-automated dataset curation framework with three stages: 
+
+1. extract feature embeddings for all images using a domain-specific encoder (e.g., an autoencoder or a pre-trained backbone) or suitable pretrained encoder; 
+2. cluster the embeddings (e.g., with k-means) to group visually similar items and then apply equal-frequency sampling within clusters to capture diverse patterns for each class; and 
+3. have subject-matter experts review the selected samples to confirm label quality. 
+
+By tuning a small set of parameters, DeepCluster++ lets practitioners balance the number of samples and the level of diversity, substantially reducing manual effort while yielding high-quality training data for robust models.
+
+# Typical Workflow - A glance
 This example demonstrates how to use DeepCluster++ to curate a diverse training set from tiles extracted out of whole-slide images (WSIs) in pathology.
 1. Select WSIs that are representative of your cohort (e.g., cases spanning different tissue types).
 2. Extract tiles (e.g., 256×256 pixels) from each WSI.
@@ -11,6 +18,8 @@ This example demonstrates how to use DeepCluster++ to curate a diverse training 
 7. Diverse sampling: Apply equal-frequency binning (per cluster) to select a balanced, diverse subset for each class.
 8. Data collection: Review the samples for each WSI and include them in the appropriate class type.
 9. Expert review (optional but recommended): Have a subject-matter expert validate the sampled tiles before finalizing the training set.
+    
+Although the workflow is demonstrated using WSIs, it is flexible and can be applied to any domain with a collection of images organized in a folder.
 
 # DeepCluster++ Usage Guide 
 We assume representative WSIs have been selected, tiles extracted, and the resulting images filtered using appropriate preprocessing methods. The AutoEncoder (AE) used in this experiement was trained on a set of tiles (images) until the reconstruction quality of test samples become prominent. 
@@ -19,7 +28,7 @@ Important to note:
 1. RGB required: Ensure that all the images (tiles) are in RGB format.
 2. Encoder input size: The pre-trained autoencoder used here was trained on images of size 256x256 pixels. If your tiles have a different size, either retrain an autoencoder at that size or use a compatible pre-trained encoder to extract features.
 3. If you have a single folder with images or multiple folders with images or folders with subfolders or etc. We have designed the program work with any folder structure.
-4. Explore the <a href="https://drive.google.com/drive/folders/193rN6BcE98ZMhPVWSHuKr1XEpZ1kJjbK?usp=drive_link" target="_blank" rel="noopener">input and output folder structure</a> to understand the following instructions.
+4. Explore the <a href="https://drive.google.com/drive/folders/1TcAcn9RNLpubfzrNClc_87EA6UQPKQ-x?usp=sharing" target="_blank" rel="noopener">input and output folder structure</a> to understand the following instructions.
 
 Input folder structure
 -------
@@ -94,6 +103,20 @@ plots (2 image files: t-SNE visualization with k-means clusters - with and witho
 │ └── ...
 └── ...
 </pre>
+
+Hardware requirements
+-----------------------
+### Minimum hardware requirements
++ RAM: 8 GB
++ Processor: Intel i5/i7 (or AMD Ryzen 5/7 equivalent)
++ Storage: 512 GB  
++ GPU: Optional (possible to run on CPU)
+
+### Recommended hardware requirements for faster execution
++ RAM: 32 GB
++ Processor: Intel i7-12th gen or newer (or AMD Ryzen 7 5000 series+)
++ Storage: 1 TB SSD (NVMe preferred)
++ GPU: NVIDIA RTX 4060 or better (8GB+ VRAM) 
 
 Create a virtual environment and install the required packages
 -------
