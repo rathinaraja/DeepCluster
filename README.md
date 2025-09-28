@@ -18,7 +18,8 @@ This example demonstrates how to use DeepCluster++ to curate a diverse training 
 2. Extract tiles (e.g., 256×256 pixels) from each WSI.
 3. Preprocess tiles to retain quality tiles.
 4. Arrange tiles on disk in a folder structure (single folder, multiple folders, or nested subfolders). DeepCluster++ is designed to work with any of the layouts below.
-5. Feature extraction: Use a domain-appropriate encoder (pre-trained autoencoder or backbone) to embed all tiles in the input directory.
+5. Feature extraction: Use a domain-specific [pre-trained autoencoder](https://github.com/rathinaraja/AutoEncoder_Image_Reconstruction) or any other pathology or real-image foundation model.
+ or backbone) to embed all tiles in the input directory.
 6. Clustering: Run k-means on embeddings to group morphologically similar tiles.
 7. Diverse sampling: Apply equal-frequency binning (per cluster) to select a balanced, diverse subset for each class.
 8. Data collection: Review the samples for each WSI and include them in the appropriate class type.
@@ -33,7 +34,7 @@ Important to note:
 1. RGB required: Ensure that all the images (tiles) are in RGB format.
 2. Encoder input size: The pre-trained autoencoder used here was trained on images of size 256x256 pixels. If your tiles have a different size, either retrain an autoencoder at that size or use a compatible pre-trained encoder to extract features.
 3. If you have a single folder with images or multiple folders with images or folders with subfolders or etc. We have designed the program work with any folder structure.
-4. Explore the <a href="https://drive.google.com/drive/folders/1TcAcn9RNLpubfzrNClc_87EA6UQPKQ-x?usp=sharing" target="_blank" rel="noopener">input and output folder structure</a> to understand the following instructions.
+4. Explore the <a href="https://drive.google.com/drive/folders/1TcAcn9RNLpubfzrNClc_87EA6UQPKQ-x?usp=sharing" target="_blank" rel="noopener"> input and output folder structure</a> to understand the following instructions.
 
 Input folder structure
 -------
