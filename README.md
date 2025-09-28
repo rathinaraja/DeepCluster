@@ -157,6 +157,7 @@ Command-line arguments
 | `--device cpu`                       | Optional. Default: None. Device type (CPU or all_gpus). |
 | `--gpu_ids 4,5`                          | Optional. Default: GPU `0` is assigned. |
 | `--batch_size 128`                     | Optional. Default: `128`. Recommended: `256`. |
+| `--dim_reduce 256`                     | Optional. Default: `256`. Speicify the dimensionality reduction size. |
 | `--distance_groups 5`                 | Default: `5`. Dividing the cluster into 5 groups.|
 | `--sample_percentage 0.2`             | Default: `0.2` (sample 20% in a cluster). Increase this value to collect more samples. |
 | `--model AE_CRC.pth`                  | Model path. By default, `AE_CRC.pth` in the current path is used. |
@@ -169,9 +170,9 @@ Command-line arguments
 
 Command-line usage
 -------  
-### Basic Usage
+### Basic run
 
-To process all the input folders (WSIs) independently in the input path regardless of subfolders or images in each input folder using two GPUs. 
+To process all the input folders (WSIs) independently in the input path regardless of subfolders or images in each input folder. 
 
 ```bash
 python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ 
@@ -242,7 +243,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --s
 
 ### Sample Organization Options
 
-By default, with `--store_samples True`, samples are stored cluster by cluster. To store samples within group folders instead:
+By default, with `--store_samples True`, samples are stored by cluster. To store samples in group folders within clusters:
 
 ```bash
 python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --store_samples_group_wise True
@@ -250,12 +251,20 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --s
 
 ### CPU and GPU usage
 
+By default, execution runs on the CPU. To process input folders/WSIs serially using CPU only, regardless of subfolders, we can set CPU option explicitly.
+
+```bash
+python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --selected_input_folders "WSI_1,WSI_3" --device cpu --store_features True --store_clusters True --store_plots True --store_samples True 
+```
+
+To utilize a specific GPU ID or enable all available GPUs, configure the settings accordingly as follows.
+
 #### Single GPU Processing
 
 Process input folders/WSIs serially using a single GPU, regardless of subfolders:
 
 ```bash
-python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Output --selected_input_folders "WSI_1,WSI_3" --gpu_ids 4 --store_features True --store_clusters True --store_plots True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Output --selected_input_folders "WSI_1,WSI_3" --gpu_ids 0 --store_features True --store_clusters True --store_plots True --store_samples True 
 ```
 #### Multiple GPU Processing
 
@@ -267,12 +276,6 @@ python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --s
 
 #### All Available GPUs Processing
 Process input folders/WSIs in parallel using all available GPUs, regardless of subfolders:
-```bash
-python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --selected_input_folders "WSI_1,WSI_3" --device all_gpus --store_features True --store_clusters True --store_plots True --store_samples True 
-```
-
-#### CPU Processing
-Process input folders/WSIs serially using CPU only, regardless of subfolders:
 ```bash
 python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --selected_input_folders "WSI_1,WSI_3" --device all_gpus --store_features True --store_clusters True --store_plots True --store_samples True 
 ```
@@ -334,6 +337,7 @@ Explore the different clusters of each WSI to collect representative tiles acros
 **Visual Inspection** 
    - Review sample images in each sample folder
    - Identify clusters that predominantly contain specific tissue types
+     
 **Manual Curation**
    - Review sampled tiles from each cluster
    - Create tissue-type specific folders:
