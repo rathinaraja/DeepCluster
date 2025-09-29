@@ -70,6 +70,7 @@ Output
 ├── features
 ├── plots
 └── samples
+└── Summary.csv
 </pre>     
 <pre> 
 clusters (contains clusters of each WSI before sampling)
@@ -110,6 +111,16 @@ samples (contains samples from the respective clusters)
 │ └── ...
 └── ...
 </pre>
+Summary.csv contains some information regarding the number of clusters, number of samples, extraction time, etc., as given below. 
+
+| WSI_Name | Total_images | Num_clusters | Num_samples_selected | Feature_extraction_time(s) | Clustering_time(s) | Sampling_time(s) | Overall_time(s) | Date_time_processed      | Additional_note |
+|:--------:|:------------:|:------------:|:--------------------:|:--------------------------:|:------------------:|:----------------:|:---------------:|:------------------------:|:---------------:|
+| WSI_5    | 500          | 23           | 110                  | 7.79                       | 46.55              | 2.65             | 56.99           | 2025-09-28 16:57:27 PDT  | GPU:6           |
+| WSI_1    | 600          | 25           | 126                  | 10.26                      | 45.63              | 3.00             | 58.88           | 2025-09-28 16:57:29 PDT  | GPU:4           |
+| WSI_2    | 600          | 25           | 137                  | 11.66                      | 44.92              | 3.15             | 59.74           | 2025-09-28 16:57:30 PDT  | GPU:5           |
+| WSI_4    | 500          | 23           | 113                  | 7.80                       | 22.95              | 2.72             | 33.47           | 2025-09-28 16:58:05 PDT  | GPU:5           |
+| WSI_3    | 600          | 25           | 131                  | 5.06                       | 28.06              | 3.06             | 36.18           | 2025-09-28 16:58:05 PDT  | GPU:4           |
+
 
 Hardware requirements
 -----------------------
@@ -310,7 +321,7 @@ python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --s
 ## Explore Clusters and Collect Representative Tiles
 
 ### Overview
-Explore the different clusters of each WSI to collect representative tiles across the following tissue types:
+Explore the different clusters of each WSI to collect representative tiles across the following tissue types in our project:
 
 | Tissue Type | Abbreviation | Description |
 |-------------|--------------|-------------|
@@ -329,7 +340,7 @@ Explore the different clusters of each WSI to collect representative tiles acros
 **Review Generated Clusters**
    ```bash
    # Navigate to cluster output directory
-   cd /path/to/output/samples/
+   cd /output_path/clusters/
    
    # Review clusters for each WSI
    ls -la WSI_*/Cluster_*
