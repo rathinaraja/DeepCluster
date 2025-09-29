@@ -1,0 +1,22 @@
+# Core scientific libraries
+pathlib
+numpy
+pandas 
+scipy
+scikit-learn
+
+# Deep learning (PyTorch + torchvision)
+torch
+torchvision
+torchaudio
+
+# Image processing
+opencv-python
+pillow
+
+# Visualization
+matplotlib
+seaborn
+
+# Progress bars
+tqdm

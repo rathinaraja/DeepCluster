@@ -1,0 +1,101 @@
+
+-----------------------------------------------------
+Input/output paths...
+-----------------------------------------------------
+Input_path	: /DeepCluster++/Test_samples_1/
+Output_path	: /DeepCluster++/Output/
+Sub_folders	: Informative_Part1,Informative_Part2,Informative_Part3,Less_Informative
+Feature_path	: /DeepCluster++/Output/features
+Cluster_path	: /DeepCluster++/Output/clusters
+t-sne_plot_path	: /DeepCluster++/Output/plots
+Samples_path	: /DeepCluster++/Output/samples
+Samples_stored	: cluster folder wise
+-----------------------------------------------------
+Configuration parameters...
+-----------------------------------------------------
+Batch_size		: 128
+Sample_percentage	: 0.2
+Num_distance_groups	: 5
+Store_features		: True
+-----------------------------------------------------
+Algorithms used...
+-----------------------------------------------------
+Feature extraction	: AutoEncoder-based encoder
+Feature_size		: 512 
+Feature_reduction	: PCA (512 -> 256)
+Clustering_algom	: K-means
+Feature_visualization	: t-SNE (256 -> 2)
+-----------------------------------------------------
+Parallel Processing Mode with GPUs
+-----------------------------------------------------
+GPU IDs: 0,1,2,3,4,5,6,7
+  GPU 0: NVIDIA L40S
+  GPU 1: NVIDIA L40S
+  GPU 2: NVIDIA L40S
+  GPU 3: NVIDIA L40S
+  GPU 4: NVIDIA L40S
+  GPU 5: NVIDIA L40S
+  GPU 6: NVIDIA L40S
+  GPU 7: NVIDIA L40S
+-----------------------------------------------------
+🗂️ Number of WSIs (input folders) found: 5
+-----------------------------------------------------
+WSI_1, WSI_2, WSI_5, WSI_3, WSI_4, 
+
+🚫 Number of WSIs (input folders) already processed: 0
+-----------------------------------------------------
+
+
+✅ Number of selected WSIs (input folders): 0
+-----------------------------------------------------
+ 
+
+📋 Number of WSIs (input folders) to be processed: 5
+-----------------------------------------------------
+WSI_2, WSI_3, WSI_1, WSI_4, WSI_5, 
+
+📊 Summary:
+-----------
+  • Total WSIs (input folders) available: 5
+  • WSIs (input folders) to skip: 0
+  • WSIs (input folders) to process: 5
+
+----------------------------------------------------------------------------------------------------
+=== WSIs (input folders) Distribution ===
+
+Hardware GPU 4: 1 slides - ['WSI_1'], ['WSI_3']
+
+Hardware GPU 5: 1 slides - ['WSI_2'], ['WSI_4']
+
+Hardware GPU 6: 1 slides - ['WSI_5']
+----------------------------------------------------------------------------------------------------
+DeepCluster++ started...!!!
+----------------------------------------------------------------------------------------------------
+
+|WSI_1| - |GPU:4| - |600 samples| - |Processing is started!!!|
+
+|WSI_2| - |GPU:5| - |600 samples| - |Processing is started!!!|
+
+|WSI_3| - |GPU:4| - |600 samples| - |Processing is started!!!|
+
+|WSI_4| - |GPU:5| - |500 samples| - |Processing is started!!!|
+
+|WSI_5| - |GPU:6| - |500 samples| - |Processing is started!!!|
+
+|WSI_1| - |GPU:4| - |600 samples| - |Processing is completed!!!|
+
+|WSI_3| - |GPU:4| - |600 samples| - |Processing is completed!!!|
+
+|WSI_2| - |GPU:5| - |600 samples| - |Processing is completed!!!|
+
+|WSI_4| - |GPU:5| - |500 samples| - |Processing is completed!!!|
+
+|WSI_5| - |GPU:6| - |500 samples| - |Processing is completed!!!|
+
+DeepCluster++ completed...!!!
+----------------------------------------------------------------------------------------------------
+
+Cleaned up all temporary feature directories
+
+All processing completed!!!
+
