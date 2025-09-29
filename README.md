@@ -140,14 +140,14 @@ Create a virtual environment and install the required packages
 -------
 Option1 - using requirements.txt 
 ```bash
-conda create -n DeepCluster python=3.9 
-conda activate DeepCluster 
+conda create -n DeepCluster++ python=3.9 
+conda activate DeepCluster++ 
 pip install -r requirements.txt
 ```
 Option2 - using environment.yml 
 ```bash
 conda env create -f environment.yml
-conda activate DeepCluster
+conda activate DeepCluster++
 ``` 
 Command-line arguments 
 -------
