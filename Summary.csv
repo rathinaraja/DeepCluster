@@ -1,4 +1,0 @@
-WSI_Name,Informative_Part1,Informative_Part2,Informative_Part3,Less_Informative,total_samples,num_clusters,num_samples_selected,feature_extraction_time(s),clustering_time(s),sampling_time(s),overall_time(s),date_time_processed,additional_note
-WSI_2,250,150,100,0,500,23,120,32.64,131.75,3.12,167.51,2025-09-02 20:23:58 PDT,GPU:0
-WSI_3,250,150,100,0,500,23,115,47.09,183.6,2.69,233.38,2025-09-02 20:25:04 PDT,GPU:1
-WSI_1,250,150,100,0,500,23,118,61.58,175.18,2.73,239.5,2025-09-02 20:25:11 PDT,GPU:2
