@@ -4,7 +4,7 @@ Input/output paths...
 -----------------------------------------------------
 Input_path	: /DeepCluster++/Test_samples_1/
 Output_path	: /DeepCluster++/Output/
-Sub_folders	: Informative_Part1,Informative_Part2,Informative_Part3,Less_Informative
+Sub_folders	: sub_folder_1,sub_folder_2,sub_folder_3,Less_Informative
 Feature_path	: /DeepCluster++/Output/features
 Cluster_path	: /DeepCluster++/Output/clusters
 t-sne_plot_path	: /DeepCluster++/Output/plots
