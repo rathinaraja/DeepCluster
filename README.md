@@ -44,13 +44,13 @@ Refer to the Test_samples_1 or Test_samples_2 folder to visualize the outcomes o
 
 <pre>/input_path/Test_samples_1
 ├── input_folder_1 (WSI_1)
-│   ├── sub_folder_1 (Informative_Part1)
+│   ├── sub_folder_1 (sub_folder_1)
 │   │   ├── image1.png
 │   │   ├── image2.png
 │   │   └── ...
-│   ├── sub_folder_2 (Informative_Part2)
+│   ├── sub_folder_2 (sub_folder_2)
 │   │   └── ...
-│   └── sub_folder_m (Informative_Partm)
+│   └── sub_folder_m (sub_folder_m)
 ├── input_folder_2 (WSI_2)
 │   ├── image1.png
 │   ├── image2.png
@@ -155,14 +155,14 @@ Command-line arguments
 + Consider the following key details about Test_samples to better understand the command-line arguments.
     - Input_path - /path/Test_samples
     - Input folders (WSIs) - WSI_1, WSI_2, WSI_3, WSI_4, and WSI_5
-    - Sub folders (if available) - Informative_Part1, Informative_Part2, Informative_Part3, Less_Informative
+    - Sub folders (if available) - sub_folder_1, sub_folder_2, sub_folder_3, sub_folder_4
 + Number of cluster for each input folder is determined by taking square root of number of samples in each input folder. 
 
 | Argument                   | Description                                                                 |
 |-----------------------------|-----------------------------------------------------------------------------|
 | `--input_path /path/Test_samples_1`      | The input path containing a set of input folders, each corresponding to a WSI. |
 | `--selected_input_folders "WSI_1,WSI_2"`       | Process specific input folders in the path (e.g., WSI names). By default, if not passed, all input folders in the path are considered. |
-| `--sub_folders "Informative_Part1,Informative_Part2"`  | If an input folder contains subfolders, specify which ones to process. By default, all subfolders in the input folder are considered. |
+| `--sub_folders "sub_folder_1,sub_folder_2"`  | If an input folder contains subfolders, specify which ones to process. By default, all subfolders in the input folder are considered. |
 | `--process_all True`                  | Process all the images in the given input path regardless of input folders and sub_folders. |
 | `--output_path /path/Output`          | Output path to store extracted features, clusters, plots, and samples. |
 | `--device cpu`                       | Optional. Default: None. Device type (CPU or all_gpus). |
@@ -238,18 +238,18 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --
 
 ### Processing Specific Subfolders
 
-To process specific subfolders (e.g., "Informative_Part1, Informative_Part3") within the folders in the input path, use the `--sub_folders` parameter:
+To process specific subfolders (e.g., "sub_folder_1, sub_folder_3") within the folders in the input path, use the `--sub_folders` parameter:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --sub_folders "Informative_Part1,Informative_Part3" --store_clusters True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
 ```
 
 ### Combined Folder and Subfolder Selection
 
-To process specific subfolders (e.g., "Informative_Part1, Informative_Part3") within specific input folders (e.g., WSI_1 and WSI_3), use both `--selected_input_folders` and `--sub_folders` parameters:
+To process specific subfolders (e.g., "sub_folder_1, sub_folder_3") within specific input folders (e.g., WSI_1 and WSI_3), use both `--selected_input_folders` and `--sub_folders` parameters:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --selected_input_folders "WSI_1,WSI_3" --sub_folders "Informative_Part1,Informative_Part3" --store_clusters True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --selected_input_folders "WSI_1,WSI_3" --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
 ```
 
 ### Sample Organization Options
@@ -298,7 +298,7 @@ python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --s
 | `--input_path` | Path to input directory containing WSIs | Required | `/path/Test_samples/` |
 | `--output_path` | Path to output directory | Required | `/path/Output/` |
 | `--selected_input_folders` | Comma-separated list of specific folders to process | `None` (all folders) | `"WSI_1,WSI_4"` |
-| `--sub_folders` | Comma-separated list of specific subfolders to process | `None` (all subfolders) | `"Informative_Part1,Informative_Part3"` |
+| `--sub_folders` | Comma-separated list of specific subfolders to process | `None` (all subfolders) | `"sub_folder_1,sub_folder_3"` |
 | `--process_all` | Process all the images in the input path | `None` | `True` |
 | `--gpu-ids` | Specify the GPU ID or list of GPU IDs | `None` | `4,7` |
 | `--device` | Process with CPU or all GPUs in the system | `cpu` | `cpu/all_gpus` |
