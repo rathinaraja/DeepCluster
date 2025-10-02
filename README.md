@@ -153,7 +153,7 @@ Command-line arguments
 -------
 + Each input folder (WSI) should include a minimum of 256 images to match the 256 PCA components used. Folder with less than 256 images is still valid but there is no DeepCluster++ applied.
 + Consider the following key details about Test_samples to better understand the command-line arguments.
-    - Input_path - /path/Test_samples
+    - Input_path - /path/Test_samples_1
     - Input folders (WSIs) - WSI_1, WSI_2, WSI_3, WSI_4, and WSI_5
     - Sub folders (if available) - sub_folder_1, sub_folder_2, sub_folder_3, sub_folder_4
 + Number of cluster for each input folder is determined by taking square root of number of samples in each input folder. 
@@ -164,7 +164,7 @@ Command-line arguments
 | `--selected_input_folders "WSI_1,WSI_2"`       | Process specific input folders in the path (e.g., WSI names). By default, if not passed, all input folders in the path are considered. |
 | `--sub_folders "sub_folder_1,sub_folder_2"`  | If an input folder contains subfolders, specify which ones to process. By default, all subfolders in the input folder are considered. |
 | `--process_all True`                  | Process all the images in the given input path regardless of input folders and sub_folders. |
-| `--output_path /path/Output`          | Output path to store extracted features, clusters, plots, and samples. |
+| `--output_path /path/Test_samples_1_output`          | Output path to store extracted features, clusters, plots, and samples. |
 | `--device cpu`                       | Optional. Default: None. Device type (CPU or all_gpus). |
 | `--gpu_ids 4,5`                          | Optional. Default: GPU `0` is assigned. |
 | `--batch_size 128`                     | Optional. Default: `128`. Recommended: `256`. |
@@ -186,14 +186,14 @@ Command-line usage
 To process all the input folders (WSIs) independently in the input path regardless of subfolders or images in each input folder. 
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ 
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ 
 ```
 ### Logging Output
 
 To log all print statements into a text file, append `| tee output.txt` at the end of your command in the terminal:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ | tee Output.txt
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ | tee Output.txt
 ``` 
 
 > **Note:** The above execution does not store any details by default.
@@ -203,7 +203,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ | 
 To store extracted features, clusters, samples, and plots, pass `True` for the appropriate command line arguments:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --store_features True --store_clusters True --store_plots True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 
 ### Processing Images Directly
@@ -211,7 +211,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --
 If the input path contains only images (no input folders), those images will be processed directly. **Ensure at least 256 images are present in the input folder:**
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/WSI_2 --output_path /path/Output/ --store_features True --store_clusters True --store_plots True --store_samples True
+python Main.py --input_path /path/Test_samples_1/WSI_2 --output_path /path/Test_samples_1_output/ --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 
 ## Advanced Usage
@@ -221,19 +221,19 @@ python Main.py --input_path /path/Test_samples_1/WSI_2 --output_path /path/Outpu
 To process specific input folders (e.g., WSI_1 and WSI_4), use the `--selected_input_folders` parameter:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --selected_input_folders "WSI_1,WSI_4" --store_features True --store_clusters True --store_plots True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --selected_input_folders "WSI_1,WSI_4" --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 
 ### Storing Specific Results
 
 #### Store Only Clusters
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --store_clusters True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --store_clusters True
 ```
 
 #### Store Only Samples
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --store_samples True
 ```
 
 ### Processing Specific Subfolders
@@ -241,7 +241,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --
 To process specific subfolders (e.g., "sub_folder_1, sub_folder_3") within the folders in the input path, use the `--sub_folders` parameter:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
 ```
 
 ### Combined Folder and Subfolder Selection
@@ -249,7 +249,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output/ --
 To process specific subfolders (e.g., "sub_folder_1, sub_folder_3") within specific input folders (e.g., WSI_1 and WSI_3), use both `--selected_input_folders` and `--sub_folders` parameters:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --selected_input_folders "WSI_1,WSI_3" --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --selected_input_folders "WSI_1,WSI_3" --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
 ```
 
 ### Sample Organization Options
@@ -257,7 +257,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --s
 By default, with `--store_samples True`, samples are stored by cluster. To store samples in group folders within clusters:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --store_samples_group_wise True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --store_samples_group_wise True
 ```
 
 ### CPU and GPU usage
@@ -265,7 +265,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Output --s
 By default, execution runs on the CPU. To process input folders/WSIs serially using CPU only, regardless of subfolders, we can set CPU option explicitly.
 
 ```bash
-python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --selected_input_folders "WSI_1,WSI_3" --device cpu --store_features True --store_clusters True --store_plots True --store_samples True 
+python Main.py  --input_path /path/Test_samples/ --output_path /path/Test_samples_1_output/ --selected_input_folders "WSI_1,WSI_3" --device cpu --store_features True --store_clusters True --store_plots True --store_samples True 
 ```
 
 To utilize a specific GPU ID or enable all available GPUs, configure the settings accordingly as follows.
@@ -275,28 +275,28 @@ To utilize a specific GPU ID or enable all available GPUs, configure the setting
 Process input folders/WSIs serially using a single GPU, regardless of subfolders:
 
 ```bash
-python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Output --selected_input_folders "WSI_1,WSI_3" --gpu_ids 0 --store_features True --store_clusters True --store_plots True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --selected_input_folders "WSI_1,WSI_3" --gpu_ids 0 --store_features True --store_clusters True --store_plots True --store_samples True 
 ```
 #### Multiple GPU Processing
 
 Process input folders/WSIs in parallel using multiple specified GPUs, regardless of subfolders:
 
 ```bash
-python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --selected_input_folders "WSI_1,WSI_3" --gpu_ids 4,5 --store_features True --store_clusters True --store_plots True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --selected_input_folders "WSI_1,WSI_3" --gpu_ids 4,5 --store_features True --store_clusters True --store_plots True --store_samples True 
 ```
 
 #### All Available GPUs Processing
 Process input folders/WSIs in parallel using all available GPUs, regardless of subfolders:
 ```bash
-python Main.py  --input_path /path/Test_samples/ --output_path /path/Output/ --selected_input_folders "WSI_1,WSI_3" --device all_gpus --store_features True --store_clusters True --store_plots True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --selected_input_folders "WSI_1,WSI_3" --device all_gpus --store_features True --store_clusters True --store_plots True --store_samples True 
 ```
 
 ## Parameters Reference
 
 | Parameter | Description | Default | Example Values |
 |-----------|-------------|---------|----------------|
-| `--input_path` | Path to input directory containing WSIs | Required | `/path/Test_samples/` |
-| `--output_path` | Path to output directory | Required | `/path/Output/` |
+| `--input_path` | Path to input directory containing WSIs | Required | `/path/Test_samples_1/` |
+| `--output_path` | Path to output directory | Required | `/path/Test_samples_1_output/` |
 | `--selected_input_folders` | Comma-separated list of specific folders to process | `None` (all folders) | `"WSI_1,WSI_4"` |
 | `--sub_folders` | Comma-separated list of specific subfolders to process | `None` (all subfolders) | `"sub_folder_1,sub_folder_3"` |
 | `--process_all` | Process all the images in the input path | `None` | `True` |
