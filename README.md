@@ -8,7 +8,7 @@ Modern computer vision projects, across research and industry, often rely on sup
 By tuning a small set of parameters, DeepCluster++ lets practitioners balance the number of samples and the level of diversity, substantially reducing manual effort while yielding high-quality training data for robust models.
 
 <div align="center">
-  <img src="https://github.com/rathinaraja/DeepCluster/blob/main/DeepCluster++.jpg" alt="Example" width="950"/>
+  <img src="https://github.com/rathinaraja/DeepCluster/blob/main/Figure_2_new.jpg" alt="Example" width="950"/>
   <p><em>Figure: DeepCluster++ framework overview</em></p>
 </div>
 
