@@ -124,7 +124,7 @@ Hardware requirements
 + RAM: 8 GB
 + Processor: Intel i7-12th gen or newer (or AMD Ryzen 7 5000 series+)
 + Storage: 1 TB SSD (NVMe preferred)
-+ GPU: NVIDIA RTX 4060 or better (8GB+ VRAM) 
++ GPU: NVIDIA RTX 4060 or better (16GB+ VRAM) 
 
 Create a virtual environment and install the required packages
 -------
@@ -148,6 +148,7 @@ Command-line arguments
 | `--sub_folders "sub_folder_1,sub_folder_2"`  | If an input folder contains subfolders, specify which ones to process. By default, all subfolders in the input folder are considered. |
 | `--process_all True`                  | Process all the images in the given input path regardless of input folders and sub_folders. |
 | `--output_path /path/Test_samples_1_output`          | Output path to store extracted features, clusters, plots, and samples. |
+| `--feature_ext`          | Encoder name to extract features. |
 | `--device cpu`                       | Optional. Default: None. Device type (cpu or all_gpus). |
 | `--gpu_ids 4,5`                          | Optional. Default: GPU `0` is assigned. |
 | `--use_gpu_clustering`                   | Optional. Uses GPU for clustering (requires RAPIDS cuML, default: False) |
@@ -166,12 +167,28 @@ Command-line arguments
 Command-line usage
 -------  
 ### Basic run
+The parameters input_path, output_path, and feature_ext are mandatory and must be specified with every program run.
 
 To process all the input folders (WSIs) independently in the input path regardless of subfolders or images in each input folder. 
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ 
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50
 ```
+### Available encoders
+
+Available feature extractors are resnet50, resnet50_1024, resnet18, densenet121, efficientnet_b0, efficientnet_b7, vit_b16, custom_cnn, uni, conch, prov_gigapath, and ctranspath.
+
+| Category                   | Encoders                  |
+|-----------------------------|---------------------------|
+| ResNet family      | resnet18, resnet50, resnet50_1024 |
+| DenseNet family       | densenet121 |
+| EfficientNet family  | efficientnet_b0, efficientnet_b7 |
+| Vision Transformers   | vit_b16, ctranspath |
+| Specialized encoders  | custom_cnn, uni, conch, prov_gigapath |
+
+Instructions are given below to add new encoders to extract features from.
+	
+
 ### Logging Output
 
 To log all print statements into a text file, append `| tee output.txt` at the end of your command in the terminal:
@@ -192,10 +209,15 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 
 ### Processing Images Directly
 
-If the input path contains only images (no input folders), those images will be processed directly. **Ensure at least 256 images are present in the input folder:**
+If the input path contains only images (no input), those images will be processed directly. **Ensure at least 256 images are present in the input folder:**
 
 ```bash
 python Main.py --input_path /path/Test_samples_1/WSI_2 --output_path /path/Test_samples_1_output/ --store_features True --store_clusters True --store_plots True --store_samples True
+```
+To process all the images from all sub folders in the input folder
+
+```bash
+python Main.py --input_path /path/Test_samples_1/WSI_1 --output_path /path/Test_samples_1_output/ --process_all True --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 
 ## Advanced Usage
