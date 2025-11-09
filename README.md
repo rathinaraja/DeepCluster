@@ -176,7 +176,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 ```
 ### Available encoders
 
-Available feature extractor names are resnet50, resnet50_1024, resnet18, densenet121, efficientnet_b0, efficientnet_b7, vit_b16, custom_cnn, uni, conch, prov_gigapath, and ctranspath.
+Available feature extractor names in the project are ae_crc, resnet50, resnet50_1024, resnet18, densenet121, efficientnet_b0, efficientnet_b7, vit_b16, custom_cnn, uni, conch, prov_gigapath, and ctranspath.
 
 | Category                   | Encoders                  |
 |-----------------------------|---------------------------|
@@ -349,6 +349,91 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 
 - Minimum 256 images per input folder for effective clustering
 - Supported image formats: `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tiff`
+
+## Encoder Comparison Table
+
+| Encoder Name | Invocation Name | Architecture | Feature Dim | Use Case | Model Size | Memory | Parameters | Notes |
+|---------|----------|--------------|------------|----------|-----------|--------|-----------|-------|
+| AE_CRC | `ae_crc` | Custom AutoEncoder | 512 | General Purpose | Medium | ~4 GB | 13 M | Lightweight, custom architecture for histopathology |
+| ResNet50 | `resnet50` | ImageNet-pretrained CNN | 2048 | Standard Baseline | Large | ~4 GB | 25.6 M | Industry standard, reproducible baseline |
+| ResNet50_1024 | `resnet50_1024` | ImageNet-pretrained CNN (Layer3) | 1024 | Efficient Baseline | Large | ~3 GB | 25.6 M | ResNet50 with intermediate layer extraction |
+| ResNet18 | `resnet18` | ImageNet-pretrained CNN | 512 | Lightweight Baseline | Small | ~2 GB | 11.7 M | Computationally efficient alternative to ResNet50 |
+| DenseNet121 | `densenet121` | ImageNet-pretrained Dense CNN | 1024 | General Purpose | Medium | ~4 GB | 8 M | Dense connections, parameter efficient |
+| EfficientNetB0 | `efficientnet_b0` | EfficientNet Family | 1280 | Efficient Extraction | Small | ~2 GB | 5.3 M | Mobile-friendly, optimal efficiency-accuracy tradeoff |
+| EfficientNetB7 | `efficientnet_b7` | EfficientNet Family | 2560 | Maximum Efficiency | Very Large | ~8 GB | 66.3 M | Largest EfficientNet, best performance |
+| ViT_B16 | `vit_b16` | Vision Transformer | 768 | Transformer-based | Large | ~6 GB | 86 M | Self-attention mechanism, global receptive field |
+| CustomCNN | `custom_cnn` | Custom CNN Architecture | Variable | Experimentation | Medium | ~4 GB | Variable | User-defined architecture for custom tasks |
+| UNI | `uni` | Pathology Foundation Model | 1024 | Histopathology-specific | Large | ~18 GB | 307.8 M | State-of-the-art for medical imaging, heavyweight |
+| CONCH | `conch` | Contrastive Learning Model | 512 | Histopathology-specific | Very Large | ~20 GB | 280 M | Contrastive pre-training, excellent for WSI |
+| Prov-GigaPath | `prov_gigapath` | Pathology Foundation Model | 1536 | Histopathology-specific | Very Large | ~22 GB | 435 M | Largest pathology model, cutting-edge features |
+| CTransPath | `ctranspath` | Transformers for Pathology | 768 | Histopathology-specific | Large | ~8 GB | 55.2 M | Lightweight pathology transformer |
+
+## Encoder Categories
+
+### 1. Lightweight Baselines
+- **`ae_crc`, `resnet18`, `efficientnet_b0`** - Best for quick experimentation, limited GPU memory
+- Memory: 2-4 GB | Parameters: 5.3M-13M | Features: 512-1280
+
+### 2. Standard Baselines
+- **`resnet50`, `resnet50_1024`, `densenet121`** - Reproducible, well-established
+- Memory: 3-4 GB | Parameters: 8M-25.6M | Features: 512-2048
+
+### 3. Advanced Architectures
+- **`efficientnet_b7`, `vit_b16`** - State-of-the-art general-purpose models
+- Memory: 6-8 GB | Parameters: 66.3M-86M | Features: 768-2560
+
+### 4. Pathology-Specific Foundation Models
+- **`uni`, `conch`, `prov_gigapath`, `ctranspath`** - Specialized for histopathology/WSI
+- Memory: 8-22 GB | Parameters: 55.2M-435M | Features: 512-1536
+- **Recommended for whole slide imaging and computational pathology**
+
+## Recommended Configurations
+
+### For Classification Tasks
+| Scenario | Primary | Secondary | Tertiary |
+|----------|---------|-----------|----------|
+| Maximum Accuracy | `prov_gigapath` | `uni` | `conch` |
+| Balanced Performance | `uni` | `ctranspath` | `resnet50` |
+| GPU Memory Constrained | `ctranspath` | `resnet50` | `densenet121` |
+| Quick Prototyping | `resnet50` | `densenet121` | `resnet18` |
+| Baseline Comparison | `resnet50` | `resnet50_1024` | `densenet121` |
+
+## Feature Dimension Impact
+
+- **512 dims**: `ae_crc`, `resnet18`, `conch` - Lower dimensional, faster downstream processing
+- **768 dims**: `vit_b16`, `ctranspath` - Balanced representation
+- **1024 dims**: `densenet121`, `uni`, `resnet50_1024` - Standard medical imaging choice
+- **1280 dims**: `efficientnet_b0` - Efficient dense representation
+- **1536 dims**: `prov_gigapath` - Rich feature representation
+- **2048 dims**: `resnet50` - High-dimensional baseline
+- **2560 dims**: `efficientnet_b7` - Maximum dimensional features
+
+## Memory-Performance Tradeoff
+
+**High-Performance (Accept High Memory)**
+```
+prov_gigapath (22GB) > uni (18GB) > conch (20GB) > efficientnet_b7 (8GB) > ae_crc (2GB)
+```
+
+**Balanced Approach**
+```
+ctranspath (8GB) > vit_b16 (6GB) > resnet50 (4GB) > ae_crc (2GB)
+```
+
+**Memory-Efficient**
+```
+ae_crc (2GB) > resnet18 (2GB) > efficientnet_b0 (2GB) > resnet50_1024 (3GB) 
+```
+
+## Quick Selection Guide
+
+- **Best Overall for Pathology**: `prov_gigapath` or `uni`
+- **Best Baseline**: `resnet50`
+- **Best If GPU-Limited**: `ctranspath` or `resnet50`
+- **Best for Speed**: `resnet18` or `efficientnet_b0`
+- **Best for Experimentation**: `ae_crc` or `densenet121`
+- **Best Transformer Option**: `vit_b16` or `ctranspath`
+
 
 ## Explore Clusters and Collect Representative Tiles
 
