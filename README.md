@@ -354,7 +354,7 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 
 | Encoder Name | Invocation Name | Architecture | Feature Dim | Use Case | Model Size | Memory | Parameters | Notes |
 |---------|----------|--------------|------------|----------|-----------|--------|-----------|-------|
-| AE_CRC | `ae_crc` | Custom AutoEncoder | 512 | General Purpose | Medium | ~4 GB | 13 M | Lightweight, custom architecture for histopathology |
+| AE_CRC | `ae_crc` | Custom AutoEncoder | 512 | Domain specific | Medium | ~2 GB | 13 M | Lightweight, custom architecture for histopathology |
 | ResNet50 | `resnet50` | ImageNet-pretrained CNN | 2048 | Standard Baseline | Large | ~4 GB | 25.6 M | Industry standard, reproducible baseline |
 | ResNet50_1024 | `resnet50_1024` | ImageNet-pretrained CNN (Layer3) | 1024 | Efficient Baseline | Large | ~3 GB | 25.6 M | ResNet50 with intermediate layer extraction |
 | ResNet18 | `resnet18` | ImageNet-pretrained CNN | 512 | Lightweight Baseline | Small | ~2 GB | 11.7 M | Computationally efficient alternative to ResNet50 |
@@ -368,28 +368,28 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 | Prov-GigaPath | `prov_gigapath` | Pathology Foundation Model | 1536 | Histopathology-specific | Very Large | ~22 GB | 435 M | Largest pathology model, cutting-edge features |
 | CTransPath | `ctranspath` | Transformers for Pathology | 768 | Histopathology-specific | Large | ~8 GB | 55.2 M | Lightweight pathology transformer |
 
-## Encoder Categories
+### Encoder Categories
 
-### 1. Lightweight Baselines
+#### 1. Lightweight Baselines
 - **`ae_crc`, `resnet18`, `efficientnet_b0`** - Best for quick experimentation, limited GPU memory
 - Memory: 2-4 GB | Parameters: 5.3M-13M | Features: 512-1280
 
-### 2. Standard Baselines
+#### 2. Standard Baselines
 - **`resnet50`, `resnet50_1024`, `densenet121`** - Reproducible, well-established
 - Memory: 3-4 GB | Parameters: 8M-25.6M | Features: 512-2048
 
-### 3. Advanced Architectures
+#### 3. Advanced Architectures
 - **`efficientnet_b7`, `vit_b16`** - State-of-the-art general-purpose models
 - Memory: 6-8 GB | Parameters: 66.3M-86M | Features: 768-2560
 
-### 4. Pathology-Specific Foundation Models
+#### 4. Pathology-Specific Foundation Models
 - **`uni`, `conch`, `prov_gigapath`, `ctranspath`** - Specialized for histopathology/WSI
 - Memory: 8-22 GB | Parameters: 55.2M-435M | Features: 512-1536
 - **Recommended for whole slide imaging and computational pathology**
 
-## Recommended Configurations
+### Recommended Configurations
 
-### For Classification Tasks
+#### For Classification Tasks
 | Scenario | Primary | Secondary | Tertiary |
 |----------|---------|-----------|----------|
 | Maximum Accuracy | `prov_gigapath` | `uni` | `conch` |
@@ -398,7 +398,7 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 | Quick Prototyping | `resnet50` | `densenet121` | `resnet18` |
 | Baseline Comparison | `resnet50` | `resnet50_1024` | `densenet121` |
 
-## Feature Dimension Impact
+### Feature Dimension Impact
 
 - **512 dims**: `ae_crc`, `resnet18`, `conch` - Lower dimensional, faster downstream processing
 - **768 dims**: `vit_b16`, `ctranspath` - Balanced representation
@@ -408,7 +408,7 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 - **2048 dims**: `resnet50` - High-dimensional baseline
 - **2560 dims**: `efficientnet_b7` - Maximum dimensional features
 
-## Memory-Performance Tradeoff
+### Memory-Performance Tradeoff
 
 **High-Performance (Accept High Memory)**
 ```
@@ -425,7 +425,7 @@ ctranspath (8GB) > vit_b16 (6GB) > resnet50 (4GB) > ae_crc (2GB)
 ae_crc (2GB) > resnet18 (2GB) > efficientnet_b0 (2GB) > resnet50_1024 (3GB) 
 ```
 
-## Quick Selection Guide
+### Quick Selection Guide
 
 - **Best Overall for Pathology**: `prov_gigapath` or `uni`
 - **Best Baseline**: `resnet50`
@@ -433,6 +433,7 @@ ae_crc (2GB) > resnet18 (2GB) > efficientnet_b0 (2GB) > resnet50_1024 (3GB)
 - **Best for Speed**: `resnet18` or `efficientnet_b0`
 - **Best for Experimentation**: `ae_crc` or `densenet121`
 - **Best Transformer Option**: `vit_b16` or `ctranspath`
+
 
 
 ## Explore Clusters and Collect Representative Tiles
