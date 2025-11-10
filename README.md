@@ -726,3 +726,22 @@ mkdir -p verified_training_set/{ADI,LYM,MUS,FCT,MUC,NCS,BLD,TUM,NOR}
 # (based on pathologist recommendations)
 ```
 
+# License & Support
+For issues, questions, or feature requests:
++ Open an issue on GitHub
++ Contact: jrathinaraja@gmail.com
++ Website: https://jrathinaraja.co.in/contact/
+
+# Funding
+Funding for this study was provided by the United States National Cancer Institute (NCI), National Institutes of Health (NIH) (R01 CA270437).
+
+# Reference
+@inproceedings{
+subramanian2025starc,
+title={{STARC}-9: A Large-scale Dataset for Multi-Class Tissue Classification for {CRC} Histopathology},
+author={Barathi Subramanian and Rathinaraja Jeyaraj and Mitchell Nevin Peterson and Terry Guo and Nigam Shah and Curtis Langlotz and Andrew Y. Ng and Jeanne Shen},
+booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
+year={2025},
+url={https://openreview.net/forum?id=rGWjTlK6Ev}
+}
+
