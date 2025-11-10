@@ -116,7 +116,7 @@ samples (contains samples from the respective clusters)
 └── ...
 </pre>
 
-Hardware requirements
+System requirements
 -----------------------
 ### Minimum hardware requirements
 + RAM: 4 GB
