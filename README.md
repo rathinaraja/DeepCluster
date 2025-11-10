@@ -728,6 +728,7 @@ mkdir -p verified_training_set/{ADI,LYM,MUS,FCT,MUC,NCS,BLD,TUM,NOR}
 
 # License & Support
 For issues, questions, or feature requests:
++ This repository is made available under the CC BY-NC 4.0 License and is available for non-commercial academic purposes.
 + Open an issue on GitHub
 + Contact: jrathinaraja@gmail.com
 + Website: https://jrathinaraja.co.in/contact/
@@ -736,6 +737,16 @@ For issues, questions, or feature requests:
 Funding for this study was provided by the United States National Cancer Institute (NCI), National Institutes of Health (NIH) (R01 CA270437).
 
 # Reference
+If you find our work useful in your research or use parts of this code, please consider citing our paper <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.  
+
+APA 6:
+```bash
+Subramanian, B., Jeyaraj, R., Peterson, M. N., Guo, T., Shah, N., Langlotz, C., Ng, A. Y., & Shen, J. (2025). STARC-9: A large-scale dataset for multi-class tissue classification for CRC histopathology. In The Thirty-Ninth Annual Conference on Neural Information Processing Systems (NeurIPS) Datasets and Benchmarks Track. https://openreview.net/forum?id=rGWjTlK6Ev
+```
+
+BibTex
+
+```bash
 @inproceedings{
 subramanian2025starc,
 title={{STARC}-9: A Large-scale Dataset for Multi-Class Tissue Classification for {CRC} Histopathology},
@@ -744,4 +755,4 @@ booktitle={The Thirty-ninth Annual Conference on Neural Information Processing S
 year={2025},
 url={https://openreview.net/forum?id=rGWjTlK6Ev}
 }
-
+```
