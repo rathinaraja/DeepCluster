@@ -164,9 +164,9 @@ Command-line arguments
 | `--store_samples True`                | Stores the samples of clusters. Default: `False` (samples are not stored). |
 | `--store_samples_group_wise True`     | Stores the samples group-wise for each cluster. Default: `False` (samples are not stored). |
 
-Command-line usage
+Command-line Usage
 -------  
-### Basic run
+### Basic Run
 The parameters input_path, output_path, and feature_ext are mandatory and must be specified with every program run.
 
 To process all the input folders (WSIs) independently in the input path regardless of subfolders or images in each input folder. 
@@ -174,7 +174,7 @@ To process all the input folders (WSIs) independently in the input path regardle
 ```bash
 python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc
 ```
-### Available encoders
+### Available Encoders
 
 Available feature extractor names in the project are ae_crc, resnet50, resnet50_1024, resnet18, densenet121, efficientnet_b0, efficientnet_b7, vit_b16, custom_cnn, uni, conch, prov_gigapath, and ctranspath.
 
@@ -303,7 +303,7 @@ K-means and sampling process are executed by CPU. If you run the program on powe
 python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_3" --device all_gpus --use_gpu_clustering True --store_clusters True --store_samples True 
 ```
 
-#### Sample Output with Multi-GPU WSI Processing Pipeline
+### Sample Output with Multi-GPU WSI Processing Pipeline
 
 Go to the respective folders to view the **sample input** (<a href="https://drive.google.com/file/d/153yQcZEtRHr8Cxj78tH-pCHYj0pZ1ur3/view?usp=sharing" target="_blank" rel="noopener">/path/Test_samples_1/</a>) and **generated output** (<a href="https://drive.google.com/file/d/1wgqlqieBn0hNS5FPr6R2BP8aSc4KNQEj/view?usp=sharing" target="_blank" rel="noopener">/path/Output/</a>) produced by the pipeline.
 
@@ -350,7 +350,7 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 - Minimum 256 images per input folder for effective clustering
 - Supported image formats: `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tiff`
 
-## Encoder Comparison Table
+# Encoder Comparison Table
 
 | Encoder Name | Invocation Name | Architecture | Feature Dim | Use Case | Model Size | Memory | Parameters | Notes |
 |---------|----------|--------------|------------|----------|-----------|--------|-----------|-------|
@@ -368,28 +368,28 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 | Prov-GigaPath | `prov_gigapath` | Pathology Foundation Model | 1536 | Histopathology-specific | Very Large | ~22 GB | 435 M | Largest pathology model, cutting-edge features |
 | CTransPath | `ctranspath` | Transformers for Pathology | 768 | Histopathology-specific | Large | ~8 GB | 55.2 M | Lightweight pathology transformer |
 
-### Encoder Categories
+## Encoder Categories
 
-#### 1. Lightweight Baselines
+### 1. Lightweight Baselines
 - **`ae_crc`, `resnet18`, `efficientnet_b0`** - Best for quick experimentation, limited GPU memory
 - Memory: 2-4 GB | Parameters: 5.3M-13M | Features: 512-1280
 
-#### 2. Standard Baselines
+### 2. Standard Baselines
 - **`resnet50`, `resnet50_1024`, `densenet121`** - Reproducible, well-established
 - Memory: 3-4 GB | Parameters: 8M-25.6M | Features: 512-2048
 
-#### 3. Advanced Architectures
+### 3. Advanced Architectures
 - **`efficientnet_b7`, `vit_b16`** - State-of-the-art general-purpose models
 - Memory: 6-8 GB | Parameters: 66.3M-86M | Features: 768-2560
 
-#### 4. Pathology-Specific Foundation Models
+### 4. Pathology-Specific Foundation Models
 - **`uni`, `conch`, `prov_gigapath`, `ctranspath`** - Specialized for histopathology/WSI
 - Memory: 8-22 GB | Parameters: 55.2M-435M | Features: 512-1536
 - **Recommended for whole slide imaging and computational pathology**
 
-### Recommended Configurations
+## Recommended Configurations
 
-#### For Classification Tasks
+### For Classification Tasks
 | Scenario | Primary | Secondary | Tertiary |
 |----------|---------|-----------|----------|
 | Maximum Accuracy | `prov_gigapath` | `uni` | `conch` |
@@ -414,17 +414,14 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 ```
 prov_gigapath (22GB) > uni (18GB) > conch (20GB) > efficientnet_b7 (8GB) > ae_crc (2GB)
 ```
-
 **Balanced Approach**
 ```
 ctranspath (8GB) > vit_b16 (6GB) > resnet50 (4GB) > ae_crc (2GB)
 ```
-
 **Memory-Efficient**
 ```
 ae_crc (2GB) > resnet18 (2GB) > efficientnet_b0 (2GB) > resnet50_1024 (3GB) 
 ```
-
 ### Quick Selection Guide
 
 - **Best Overall for Pathology**: `prov_gigapath` or `uni`
@@ -621,7 +618,7 @@ Then try downloading a model again.
 
 ---
 
-## Next Steps
+### Next Steps
 
 After authentication, you can use these encoders in your pipeline: For example, to use uni encoder,
 
@@ -632,9 +629,9 @@ python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samp
 The encoders will automatically download the models using your authenticated token.
 
 
-## Explore Clusters and Collect Representative Tiles
+# Explore Clusters and Collect Representative Tiles
 
-### Overview
+## Overview
 Explore the different clusters of each WSI to collect representative tiles across the following tissue types in our project:
 
 | Tissue Type | Abbreviation | Description |
@@ -649,7 +646,7 @@ Explore the different clusters of each WSI to collect representative tiles acros
 | **TUM** | Tumor | Tumor tissue |
 | **NOR** | Normal | Normal epithelial tissue |
 
-### Cluster Exploration Process
+## Cluster Exploration Process
 
 **Review Generated Clusters**
    ```bash
@@ -679,23 +676,23 @@ Explore the different clusters of each WSI to collect representative tiles acros
      └── NOR/
      ```
 
-### Quality Assurance
+## Quality Assurance
 - Ensure balanced representation across all 9 tissue types
 - Verify cluster purity for each tissue type
 - Document cluster-to-tissue-type mapping for reproducibility
 
-## Step 7: Pathologist Verification
+# Pathologist Verification
 
-### Training Set Validation
+## Training Set Validation
 
 The collected representative tiles undergo rigorous pathologist verification to ensure:
 
-#### Annotation Quality Control
+### Annotation Quality Control
 - **Expert Review**: Board-certified pathologists examine each representative tile
 - **Consensus Building**: Multiple pathologists review ambiguous cases
 - **Documentation**: All annotations are documented with reasoning
 
-#### Verification Process
+### Verification Process
 ```bash
 # Organize tiles for pathologist review
 mkdir -p pathologist_review/{pending,verified,rejected}
@@ -704,7 +701,7 @@ mkdir -p pathologist_review/{pending,verified,rejected}
 cp -r representative_tiles/* pathologist_review/pending/
 ```
 
-#### Verification Criteria
+### Verification Criteria
 | Criteria | Description | Action |
 |----------|-------------|---------|
 | **Tissue Type Accuracy** | Correct classification of tissue type | Accept/Reject/Reclassify |
@@ -712,7 +709,7 @@ cp -r representative_tiles/* pathologist_review/pending/
 | **Representative Nature** | Typical example of tissue type | Accept/Request alternatives |
 | **Diagnostic Relevance** | Clinically relevant features present | Accept/Enhance dataset |
 
-#### Verification Workflow
+### Verification Workflow
 **Initial Review**: Pathologist examines tiles by tissue type
 
 **Quality Assessment**: Rate each tile (1-5 scale)
