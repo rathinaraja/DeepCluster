@@ -18,8 +18,8 @@ This example demonstrates how to use DeepCluster++ to curate a diverse training 
 2. Extract and pre-process tiles (e.g., 256×256 pixels) from each WSI.
 3. Preprocess tiles to retain quality tiles.
 4. Arrange tiles on the device in a folder structure (single folder, multiple folders, or nested subfolders). DeepCluster++ is designed to work with any specific subfolders or any of these layouts.
-5. Feature extraction: Use a domain-specific [pre-trained autoencoder](https://github.com/rathinaraja/AutoEncoder_Image_Reconstruction) or any other pathology or real-image foundation model.
- or backbone) to embed all tiles in the input directory.
+5. Feature extraction: Use a domain-specific [pre-trained autoencoder](https://github.com/rathinaraja/AutoEncoder_Image_Reconstruction) or any other pathology or real-image foundation model [Jump to Encoder Section](#Encoders-Available-for-Use)
+to encode all image tiles in the input directory.
 6. Clustering: Run k-means on embeddings to group morphologically similar tiles.
 7. Diverse sampling: Apply equal-frequency binning (per cluster) to select a balanced, diverse subset for each class.
 8. Data collection: Review the samples for each WSI and include them in the appropriate class type.
@@ -27,7 +27,7 @@ This example demonstrates how to use DeepCluster++ to curate a diverse training 
     
 Although the workflow is demonstrated using WSIs, it is flexible and can be applied to any domain with a collection of images organized in a folder.
 
-**Note:** If you find our work useful in your research or use parts of this code, please consider citing our paper (#Citation).
+**Note:** If you find our work useful in your research or use parts of this code, please consider citing our paper, [Jump to Citation Section](#Citation).
 
 # DeepCluster++ Usage Guide 
 We assume representative WSIs have been selected, tiles extracted, and the resulting images filtered using appropriate preprocessing methods. The AutoEncoder (AE) used in this experiement was trained on a set of tiles (images) until the reconstruction quality of test samples become prominent. 
@@ -352,7 +352,7 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 - Minimum 256 images per input folder for effective clustering
 - Supported image formats: `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tiff`
 
-# Encoder Comparison Table
+# Encoders Available for Use
 
 | Encoder Name | Invocation Name | Architecture | Feature Dim | Use Case | Model Size | Memory | Parameters | Notes |
 |---------|----------|--------------|------------|----------|-----------|--------|-----------|-------|
