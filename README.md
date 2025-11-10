@@ -172,7 +172,7 @@ The parameters input_path, output_path, and feature_ext are mandatory and must b
 To process all the input folders (WSIs) independently in the input path regardless of subfolders or images in each input folder. 
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc
 ```
 ### Available encoders
 
@@ -193,7 +193,7 @@ Instructions are given below to add new encoders to extract features from.
 To log all print statements into a text file, append `| tee output.txt` at the end of your command in the terminal:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 | tee Output.txt
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc | tee Output.txt
 ``` 
 
 > **Note:** The above execution does not store any output data by default as the default argument is set to False.
@@ -203,7 +203,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 To store extracted features, clusters, samples, and cluster plots, pass `True` for the appropriate command line arguments: 
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --store_features True --store_clusters True --store_plots True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 
 ### Processing Images Directly
@@ -211,12 +211,12 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 If the input path contains only images (no input), those images will be processed directly. **Ensure at least 256 images are present in the input folder:**
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/WSI_2 --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --store_features True --store_clusters True --store_plots True --store_samples True
+python Main.py --input_path /path/Test_samples_1/WSI_2 --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 To process all the images from all sub folders in the input folder
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/WSI_1 --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --process_all True --store_features True --store_clusters True --store_plots True --store_samples True
+python Main.py --input_path /path/Test_samples_1/WSI_1 --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --process_all True --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 
 ## Advanced Usage
@@ -226,19 +226,19 @@ python Main.py --input_path /path/Test_samples_1/WSI_1 --output_path /path/Test_
 To process specific input folders (e.g., WSI_1 and WSI_4), use the `--selected_input_folders` parameter:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --selected_input_folders "WSI_1,WSI_4" --store_features True --store_clusters True --store_plots True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_4" --store_features True --store_clusters True --store_plots True --store_samples True
 ```
 
 ### Storing Specific Results
 
 #### Store Only Clusters
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --store_clusters True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --store_clusters True
 ```
 
 #### Store Only Samples
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --store_samples True
 ```
 
 ### Processing Specific Subfolders
@@ -246,7 +246,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 To process specific subfolders (e.g., "sub_folder_1, sub_folder_3") within the folders in the input path, use the `--sub_folders` parameter:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
 ```
 
 ### Combined Folder and Subfolder Selection
@@ -254,7 +254,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 To process specific subfolders (e.g., "sub_folder_1, sub_folder_3") within specific input folders (e.g., WSI_1 and WSI_3), use both `--selected_input_folders` and `--sub_folders` parameters:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --feature_ext resnet50 --selected_input_folders "WSI_1,WSI_3" --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_3" --sub_folders "sub_folder_1,sub_folder_3" --store_clusters True --store_samples True
 ```
 
 ### Sample Organization Options
@@ -262,7 +262,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 By default, with `--store_samples True`, samples are stored by cluster. To store samples in group folders within clusters:
 
 ```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --feature_ext resnet50 --store_samples_group_wise True
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --feature_ext ae_crc --store_samples_group_wise True
 ```
 
 ### CPU and GPU usage
@@ -270,7 +270,7 @@ python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_sampl
 By default, execution runs on the CPU. To process input folders/WSIs serially using CPU only, we can set CPU option explicitly.
 
 ```bash
-python Main.py  --input_path /path/Test_samples/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --selected_input_folders "WSI_1,WSI_3" --device cpu --store_clusters True --store_samples True 
+python Main.py  --input_path /path/Test_samples/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_3" --device cpu --store_clusters True --store_samples True 
 ```
 
 To utilize a specific GPU ID or enable all available GPUs, configure the settings accordingly as follows.
@@ -278,7 +278,7 @@ To utilize a specific GPU ID or enable all available GPUs, configure the setting
 #### All Available GPUs Processing
 Process input folders/WSIs in parallel using all available GPUs:
 ```bash
-python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --selected_input_folders "WSI_1,WSI_3" --device all_gpus --store_features True --store_clusters True --store_plots True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_3" --device all_gpus --store_features True --store_clusters True --store_plots True --store_samples True 
 ```
 If there are "n" input folders, then based on the number of GPUs available in machine, "n" distributed equally.
 
@@ -287,20 +287,20 @@ If there are "n" input folders, then based on the number of GPUs available in ma
 Process input folders/WSIs serially using a single GPU:
 
 ```bash
-python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --feature_ext resnet50 --selected_input_folders "WSI_1,WSI_3" --device all_gpus --gpu_ids 0 --store_clusters True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_3" --device all_gpus --gpu_ids 0 --store_clusters True --store_samples True 
 ```
 #### Multiple GPU Processing
 
 Process input folders/WSIs in parallel using multiple specified GPUs:
 
 ```bash
-python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --selected_input_folders "WSI_1,WSI_3" --device all_gpus --gpu_ids 4,5 --store_clusters True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_3" --device all_gpus --gpu_ids 4,5 --store_clusters True --store_samples True 
 ```
 
 #### GPU accelaration for clustering and sampling process
 K-means and sampling process are executed by CPU. If you run the program on powerful GPUs, when there 1000s of samples, it is good to make use of them to accelarate clustering and samplingunnig on GPUs:
 ```bash
-python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext resnet50 --selected_input_folders "WSI_1,WSI_3" --device all_gpus --use_gpu_clustering True --store_clusters True --store_samples True 
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --selected_input_folders "WSI_1,WSI_3" --device all_gpus --use_gpu_clustering True --store_clusters True --store_samples True 
 ```
 
 #### Sample Output with Multi-GPU WSI Processing Pipeline
@@ -434,6 +434,202 @@ ae_crc (2GB) > resnet18 (2GB) > efficientnet_b0 (2GB) > resnet50_1024 (3GB)
 - **Best for Experimentation**: `ae_crc` or `densenet121`
 - **Best Transformer Option**: `vit_b16` or `ctranspath`
 
+## Adding New Encoder for Feature Extraction
+
+The framework is highly modular, enabling seamless integration of new encoders. This design ensures maximum flexibility, scalability, and reproducibility across diverse computational pathology workflows. Follow these **4 simple steps** to add a new encoder:
+
+### 1. Add the Model File
+
+Place a new encoder file (e.g., `NewEncoder.py`) in the `Encoders/` directory.
+
+### 2. Import the Encoder
+
+Add the following line to import the encoder in `Feature_extraction.py` file:
+
+```python
+from Encoders.NewEncoder import NewEncoder
+```
+
+### 3. Register the Encoder
+
+Add it to the encoder dictionary in `Feature_extraction.py`:
+
+```python
+Available_Encoders = {
+    'new_en': NewEncoder,
+    ...
+}
+```
+
+### 4. Use the New Encoder
+
+Specify the encoder name in `Config.py`:
+
+```python
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext new_en --selected_input_folders "WSI_1,WSI_3" --device all_gpus --use_gpu_clustering True --store_clusters True --store_samples 
+```
+
+### Benefits
+
+This modular structure ensures:
+- ✅ Maximum flexibility
+- ✅ Scalability
+- ✅ Reproducibility
+- ✅ Easy integration of diverse encoders across computational pathology workflows
+
+## HuggingFace Token Setup for Pathology Encoders
+
+Models such as **UNI**, **CONCH**, **Prov-GigaPath**, and **CTransPath** require permission to download from HuggingFace. Follow these steps to set up authentication.
+
+### Step 1: Request HuggingFace Tokens
+
+Visit [HuggingFace Settings - Tokens](https://huggingface.co/settings/tokens) to generate access tokens for the following models:
+
+- [UNI](https://huggingface.co/MahmoodLab/UNI)
+- [CONCH](https://huggingface.co/MahmoodLab/CONCH)
+- [Prov-GigaPath](https://huggingface.co/prov-gigapath/Prov-GigaPath)
+- [CTransPath](https://huggingface.co/Xiyue/CTransPath)
+
+Create a **Fine-grained** token with `repo.content.read` permissions.
+
+---
+
+### Step 2: Install Required Libraries
+
+If not already installed, install the necessary packages:
+
+```bash
+pip install timm
+conda install -c conda-forge huggingface_hub
+pip install -U huggingface_hub
+```
+
+---
+
+### Step 3: Authenticate with HuggingFace
+
+Run the following command to log in:
+
+```bash
+hf_auth login
+```
+
+You will see the HuggingFace banner:
+
+```
+    _|    _|  _|    _|    _|_|_|    _|_|_|  _|_|_|  _|      _|    _|_|_|      _|_|_|_|    _|_|      _|_|_|  _|_|_|_|
+    _|    _|  _|    _|  _|        _|          _|    _|_|    _|  _|            _|        _|    _|  _|        _|
+    _|_|_|_|  _|    _|  _|  _|_|  _|  _|_|    _|    _|  _|  _|  _|  _|_|      _|_|_|    _|_|_|_|  _|        _|_|_|
+    _|    _|  _|    _|  _|    _|  _|    _|    _|    _|    _|_|  _|    _|      _|        _|    _|  _|        _|
+    _|    _|    _|_|      _|_|_|    _|_|_|  _|_|_|  _|      _|    _|_|_|      _|        _|    _|    _|_|_|  _|_|_|_|
+```
+
+### Step 3a: Enter Your Token
+
+When prompted, enter your HuggingFace token (input will not be visible):
+
+```
+To log in, `huggingface_hub` requires a token generated from https://huggingface.co/settings/tokens .
+Enter your token (input will not be visible):
+```
+
+Paste the token you generated from HuggingFace.
+
+### Step 3b: Save Token as Git Credential
+
+When asked to add token as git credential, respond with `Y`:
+
+```
+Add token as git credential? (Y/n) y
+```
+
+The system will confirm:
+
+```
+Token is valid (permission: fineGrained).
+The token has been saved to /home/user/.cache/huggingface/stored_tokens
+Your token has been saved in your configured git credential helpers (store).
+Your token has been saved to /home/user/.cache/huggingface/token
+Login successful.
+```
+
+---
+
+### Step 4: Configure Git Credential Helper (Optional)
+
+To ensure credentials are properly stored, configure git:
+
+```bash
+git config --global credential.helper store
+```
+
+---
+
+## Verification
+
+Verify your authentication:
+
+```bash
+hf auth whoami
+```
+
+You should see output indicating your logged-in token and permissions.
+
+To log out if needed:
+
+```bash
+hf auth logout
+```
+
+---
+
+### Summary
+
+| Step | Command |
+|------|---------|
+| Install packages | `pip install timm && conda install -c conda-forge huggingface_hub && pip install -U huggingface_hub` |
+| Authenticate | `hf auth login` |
+| Store credentials | `git config --global credential.helper store` |
+| Verify login | `hf auth whoami` |
+| Logout (if needed) | `hf auth logout` |
+
+---
+
+### Troubleshooting
+
+#### Issue: Permission Denied for Model
+
+**Solution**: Ensure you have accepted the model's license on HuggingFace and your token has `repo.content.read` permissions.
+
+#### Issue: Token Already Saved
+
+If you see `A token is already saved on your machine`, you can:
+
+- View current token: `hf auth whoami`
+- Replace with new token: `hf auth login` (will erase existing token)
+- Logout and login: `hf auth logout && hf auth login`
+
+#### Issue: Models Not Downloading
+
+**Solution**: Verify authentication is active:
+
+```bash
+hf auth whoami
+```
+
+Then try downloading a model again.
+
+---
+
+## Next Steps
+
+After authentication, you can use these encoders in your pipeline: For example, to use uni encoder,
+
+```python
+python Main.py  --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext uni --selected_input_folders "WSI_1,WSI_3" --device all_gpus --use_gpu_clustering True --store_clusters True --store_samples 
+```
+
+The encoders will automatically download the models using your authenticated token.
 
 
 ## Explore Clusters and Collect Representative Tiles
