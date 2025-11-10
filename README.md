@@ -27,6 +27,8 @@ to encode all image tiles in the input directory.
     
 Although the workflow is demonstrated using WSIs, it is flexible and can be applied to any domain with a collection of images organized in a folder.
 
+If you find our work useful in your research or use parts of this code, please consider citing our paper <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.  
+
 **Note:** If you find our work useful in your research or use parts of this code, please consider citing our paper, [Jump to Citation Section](#Citation).
 
 # DeepCluster++ Usage Guide 
@@ -741,7 +743,7 @@ Funding for this study was provided by the United States National Cancer Institu
 # Citation
 If you find our work useful in your research or use parts of this code, please consider citing our paper <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.  
 
-APA 6:\
+APA 6
 ```bash
 Subramanian, B., Jeyaraj, R., Peterson, M. N., Guo, T., Shah, N., Langlotz, C., Ng, A. Y., & Shen, J. (2025). STARC-9: A large-scale dataset for multi-class tissue classification for CRC histopathology. In The Thirty-Ninth Annual Conference on Neural Information Processing Systems (NeurIPS) Datasets and Benchmarks Track. https://openreview.net/forum?id=rGWjTlK6Ev
 ```
