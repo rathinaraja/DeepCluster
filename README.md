@@ -19,7 +19,7 @@ This example demonstrates how to use DeepCluster++ to curate a diverse training 
 3. Preprocess tiles to retain quality tiles.
 4. Arrange tiles on the device in a folder structure (single folder, multiple folders, or nested subfolders). DeepCluster++ is designed to work with any specific subfolders or any of these layouts.
 5. Feature extraction: Use a domain-specific [pre-trained autoencoder](https://github.com/rathinaraja/AutoEncoder_Image_Reconstruction) or [any other pathology](#Encoders-Available-for-Use)
-or real-image foundation model to encode all image tiles in the input directory.
+or real-image foundation model to encode all image tiles in the input directory. [To add new encoder](#Adding-New-Encoder-for-Feature-Extraction) to work with this codebase, it is effortlessly very simple.
 6. Clustering: Run k-means on embeddings to group morphologically similar tiles.
 7. Diverse sampling: Apply equal-frequency binning (per cluster) to select a balanced, diverse subset for each class.
 8. Data collection: Review the samples for each WSI and include them in the appropriate class type.
@@ -359,18 +359,18 @@ The <a href="https://github.com/rathinaraja/DeepCluster/blob/main/Summary.csv" t
 | Encoder Name | Invocation Name | Architecture | Feature Dim | Use Case | Model Size | Memory | Parameters | Notes |
 |---------|----------|--------------|------------|----------|-----------|--------|-----------|-------|
 | AE_CRC | `ae_crc` | Custom AutoEncoder | 512 | Domain specific | Medium | ~2 GB | 13 M | Lightweight, custom architecture for histopathology |
-| ResNet50 | `resnet50` | ImageNet-pretrained CNN | 2048 | Standard Baseline | Large | ~4 GB | 25.6 M | Industry standard, reproducible baseline |
-| ResNet50_1024 | `resnet50_1024` | ImageNet-pretrained CNN (Layer3) | 1024 | Efficient Baseline | Large | ~3 GB | 25.6 M | ResNet50 with intermediate layer extraction |
+| ResNet50 | `resnet50` | ImageNet-pretrained CNN | 2048 | Standard Baseline | Large | ~4 GB | 24 M | Industry standard, reproducible baseline |
+| ResNet50_1024 | `resnet50_1024` | ImageNet-pretrained CNN (Layer3) | 1024 | Efficient Baseline | Large | ~3 GB | 24 M | ResNet50 with intermediate layer extraction |
 | ResNet18 | `resnet18` | ImageNet-pretrained CNN | 512 | Lightweight Baseline | Small | ~2 GB | 11.7 M | Computationally efficient alternative to ResNet50 |
 | DenseNet121 | `densenet121` | ImageNet-pretrained Dense CNN | 1024 | General Purpose | Medium | ~4 GB | 8 M | Dense connections, parameter efficient |
 | EfficientNetB0 | `efficientnet_b0` | EfficientNet Family | 1280 | Efficient Extraction | Small | ~2 GB | 5.3 M | Mobile-friendly, optimal efficiency-accuracy tradeoff |
-| EfficientNetB7 | `efficientnet_b7` | EfficientNet Family | 2560 | Maximum Efficiency | Very Large | ~8 GB | 66.3 M | Largest EfficientNet, best performance |
+| EfficientNetB7 | `efficientnet_b7` | EfficientNet Family | 2560 | Maximum Efficiency | Very Large | ~8 GB | 64 M | Largest EfficientNet, best performance |
 | ViT_B16 | `vit_b16` | Vision Transformer | 768 | Transformer-based | Large | ~6 GB | 86 M | Self-attention mechanism, global receptive field |
-| CustomCNN | `custom_cnn` | Custom CNN Architecture | Variable | Experimentation | Medium | ~4 GB | Variable | User-defined architecture for custom tasks |
-| UNI | `uni` | Pathology Foundation Model | 1024 | Histopathology-specific | Large | ~18 GB | 307.8 M | State-of-the-art for medical imaging, heavyweight |
-| CONCH | `conch` | Contrastive Learning Model | 512 | Histopathology-specific | Very Large | ~20 GB | 280 M | Contrastive pre-training, excellent for WSI |
-| Prov-GigaPath | `prov_gigapath` | Pathology Foundation Model | 1536 | Histopathology-specific | Very Large | ~22 GB | 435 M | Largest pathology model, cutting-edge features |
-| CTransPath | `ctranspath` | Transformers for Pathology | 768 | Histopathology-specific | Large | ~8 GB | 55.2 M | Lightweight pathology transformer |
+| CustomCNN | `custom_cnn` | Custom CNN Architecture | Variable | Experimentation | Medium | ~4 GB | 3.9 M | User-defined architecture for custom tasks |
+| UNI | `uni` | Pathology Foundation Model | 1024 | Histopathology-specific | Large | ~18 GB | 88 M | State-of-the-art for medical imaging, heavyweight |
+| CONCH | `conch` | Contrastive Learning Model | 512 | Histopathology-specific | Very Large | ~20 GB | 87 M | Contrastive pre-training, excellent for WSI |
+| Prov-GigaPath | `prov_gigapath` | Pathology Foundation Model | 1536 | Histopathology-specific | Very Large | ~22 GB | 305 M | Largest pathology model, cutting-edge features |
+| CTransPath | `ctranspath` | Transformers for Pathology | 768 | Histopathology-specific | Large | ~8 GB | 87 M | Lightweight pathology transformer |
 
 ## Encoder Categories
 
