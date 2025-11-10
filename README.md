@@ -3,7 +3,8 @@ Modern computer vision projects, across research and industry, often rely on sup
 
 1. extract feature embeddings for all images using a domain-specific encoder (e.g., an autoencoder or a pre-trained backbone) or suitable pretrained encoder; 
 2. cluster the embeddings (e.g., with k-means) to group similar samples and then apply equal-frequency binning within clusters to capture diverse patterns for each class; and 
-3. have subject-matter experts review the selected samples to confirm label quality. 
+3. have subject-matter experts review the selected samples to confirm label quality.
+4. Train a classifier model and validate the model performance.
 
 By tuning a small set of parameters, DeepCluster++ lets us balance the number of samples and the level of diversity, substantially reducing manual effort while yielding high-quality training data for robust models.
 
@@ -24,6 +25,7 @@ or real-image foundation model to encode all image tiles in the input directory.
 7. Diverse sampling: Apply equal-frequency binning (per cluster) to select a balanced, diverse subset for each class.
 8. Data collection: Review the samples for each WSI and include them in the appropriate class type.
 9. Expert review (optional but recommended): Have a subject-matter expert validate the sampled tiles before finalizing the training set.
+10. To train and validate a variety of classifier models, please visit the [STARC-9 Evaluation](https://github.com/rathinaraja/STARC-9-Evaluation) repository. 
     
 Although the workflow is demonstrated using WSIs, it is flexible and can be applied to any domain with a collection of images organized in a folder.
 
@@ -721,6 +723,9 @@ cp -r representative_tiles/* pathologist_review/pending/
 **Consensus Meeting**: Resolve disagreements
 
 **Final Dataset**: Create verified training set
+
+# Classifier Model Training and Evaluation
+To explore model benchmarking and performance validation on the STARC-9 dataset, refer to the companion repository [STARC-9 Evaluation](https://github.com/rathinaraja/STARC-9-Evaluation). This repository provides scripts and workflows for training and validating a variety of classifier models, including baseline and pathology specific foundation architectures. It also includes evaluation metrics, visualization tools, and reproducible experiment setups for comparative analysis.
 
 ```bash
 # After verification, organize final training set
