@@ -18,8 +18,8 @@ This example demonstrates how to use DeepCluster++ to curate a diverse training 
 2. Extract and pre-process tiles (e.g., 256×256 pixels) from each WSI.
 3. Preprocess tiles to retain quality tiles.
 4. Arrange tiles on the device in a folder structure (single folder, multiple folders, or nested subfolders). DeepCluster++ is designed to work with any specific subfolders or any of these layouts.
-5. Feature extraction: Use a domain-specific [pre-trained autoencoder](https://github.com/rathinaraja/AutoEncoder_Image_Reconstruction) or any other pathology or real-image foundation model [Jump to Encoder Section](#Encoders-Available-for-Use)
-to encode all image tiles in the input directory.
+5. Feature extraction: Use a domain-specific [pre-trained autoencoder](https://github.com/rathinaraja/AutoEncoder_Image_Reconstruction) or [any other pathology](#Encoders-Available-for-Use)
+or real-image foundation model to encode all image tiles in the input directory.
 6. Clustering: Run k-means on embeddings to group morphologically similar tiles.
 7. Diverse sampling: Apply equal-frequency binning (per cluster) to select a balanced, diverse subset for each class.
 8. Data collection: Review the samples for each WSI and include them in the appropriate class type.
@@ -29,7 +29,7 @@ Although the workflow is demonstrated using WSIs, it is flexible and can be appl
 
 If you find our work useful in your research or use parts of this code, please consider citing our paper <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.  
 
-**Note:** If you find our work useful in your research or use parts of this code, please consider citing our paper, [Jump to Citation Section](#Citation).
+**Note:** If you find our work useful in your research or use parts of this code or dataset, please consider [citing our paper](#Citation).
 
 # DeepCluster++ Usage Guide 
 We assume representative WSIs have been selected, tiles extracted, and the resulting images filtered using appropriate preprocessing methods. The AutoEncoder (AE) used in this experiement was trained on a set of tiles (images) until the reconstruction quality of test samples become prominent. 
@@ -741,7 +741,7 @@ For issues, questions, or feature requests:
 Funding for this study was provided by the United States National Cancer Institute (NCI), National Institutes of Health (NIH) (R01 CA270437).
 
 # Citation
-If you find our work useful in your research or use parts of this code, please consider citing our paper <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.  
+If you find our work useful in your research or use parts of this code or dataset, please consider citing our paper <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.  
 
 APA 6
 ```bash
