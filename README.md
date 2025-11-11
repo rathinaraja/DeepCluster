@@ -29,9 +29,10 @@ or real-image foundation model to encode all image tiles in the input directory.
     
 Although the workflow is demonstrated using WSIs, it is flexible and can be applied to any domain with a collection of images organized in a folder.
 
-If you find our work useful in your research or use parts of this code, please consider citing our paper <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.  
-
-**Note:** If you find our work useful in your research or use parts of this code or dataset, please consider [citing our paper](#Citation).
+**Note:** 
+1. Paper link is given here: <a href="https://openreview.net/forum?id=rGWjTlK6Ev" target="_blank" rel="noopener"> Openreview </a>  or <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> Arxiv </a>.
+2. If you find our work useful in your research or use parts of this code or dataset, please consider [citing our paper](#Citation).
+3. Both the collected dataset and the trained model have been made publicly available for research use. Visit <a href="https://huggingface.co/datasets/Path2AI/STARC-9/tree/main" target="_blank" rel="noopener"> here </a>.
 
 # DeepCluster++ Usage Guide 
 We assume representative WSIs have been selected, tiles extracted, and the resulting images filtered using appropriate preprocessing methods. The AutoEncoder (AE) used in this experiement was trained on a set of tiles (images) until the reconstruction quality of test samples become prominent. 
