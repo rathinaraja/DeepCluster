@@ -181,6 +181,8 @@ To process all the input folders (WSIs) independently in the input path regardle
 ```bash
 python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc
 ```
+> **Note:** The above execution does not store any output data by default as the default argument is set to False.
+
 ### Available Encoders
 
 Available feature extractor names in the project are ae_crc, resnet50, resnet50_1024, resnet18, densenet121, efficientnet_b0, efficientnet_b7, vit_b16, custom_cnn, uni, conch, prov_gigapath, and ctranspath.
@@ -195,16 +197,6 @@ Available feature extractor names in the project are ae_crc, resnet50, resnet50_
 
 Instructions are given below to add new encoders to extract features from.
 
-### Logging Output
-
-To log all print statements into a text file, append `| tee output.txt` at the end of your command in the terminal:
-
-```bash
-python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc | tee Output.txt
-``` 
-
-> **Note:** The above execution does not store any output data by default as the default argument is set to False.
-
 ### Storing Results
 
 To store extracted features, clusters, samples, and cluster plots, pass `True` for the appropriate command line arguments: 
@@ -212,6 +204,15 @@ To store extracted features, clusters, samples, and cluster plots, pass `True` f
 ```bash
 python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --store_features True --store_clusters True --store_plots True --store_samples True
 ```
+
+### Logging Output
+
+To log all print statements into a text file, append `| tee output.txt` at the end of your command in the terminal:
+
+```bash
+python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --store_features True --store_clusters True --store_plots True --store_samples True | tee Sample_output.txt
+``` 
+The output record can be seen in [here](https://github.com/rathinaraja/DeepCluster/blob/main/Sample_output.txt).
 
 ### Processing Images Directly
 
