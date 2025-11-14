@@ -212,7 +212,7 @@ To log all print statements into a text file, append `| tee output.txt` at the e
 ```bash
 python Main.py --input_path /path/Test_samples_1/ --output_path /path/Test_samples_1_output/ --feature_ext ae_crc --store_features True --store_clusters True --store_plots True --store_samples True | tee Sample_output.txt
 ``` 
-The output record can be seen in [here](https://github.com/rathinaraja/DeepCluster/blob/main/Sample_output.txt).
+The samle output displayed on the commandline is shown [here](https://github.com/rathinaraja/DeepCluster/blob/main/Sample_output.txt).
 
 ### Processing Images Directly
 
