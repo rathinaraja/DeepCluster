@@ -1,5 +1,6 @@
-# What is DeepCluster++? 
+# DeepCluster++
 **STARC-9: A Large-scale Dataset for Multi-Class Tissue Classification for CRC Histopathology**, NeruIPS 2025.
+
 _Barathi Subramanian, Rathinaraja Jeyaraj, Mitchell Nevin Peterson, Terry Guo, Nigam Shah, Curtis Langlotz, Andrew Y Ng, Jeanne Shen_
 
 <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> PaPer </a> | [Cite](#Citation)
