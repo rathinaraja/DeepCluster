@@ -1,9 +1,6 @@
 # DeepCluster++
-**STARC-9: A Large-scale Dataset for Multi-Class Tissue Classification for CRC Histopathology**, NeruIPS 2025.
-
+**STARC-9: A Large-scale Dataset for Multi-Class Tissue Classification for CRC Histopathology**, NeruIPS 2025.   <a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> PaPer </a> | [Cite](#Citation)  <br>
 _Barathi Subramanian, Rathinaraja Jeyaraj, Mitchell Nevin Peterson, Terry Guo, Nigam Shah, Curtis Langlotz, Andrew Y Ng, Jeanne Shen_
-
-<a href="https://arxiv.org/abs/2511.00383" target="_blank" rel="noopener"> PaPer </a> | [Cite](#Citation)
 
 Modern computer vision projects, across research and industry, often rely on supervised learning, which in turn demands well-curated, diverse training data. To efficiently gather representative samples from large image collections, we introduce DeepCluster++, a semi-automated dataset curation framework with three stages: 
 
